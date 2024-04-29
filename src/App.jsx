@@ -5,7 +5,7 @@ import './App.css'
 
 function App() {
   return (
-    <h1>poto</h1>
+    <h1>Que no cunda el panico.</h1>
   )
 }
 
