@@ -1,0 +1,47 @@
+.footer {
+    background-color: #b62727;
+    color: #ffffff;
+    padding: 20px;
+    font-family: "Exo 2", sans-serif;
+  }
+  
+  .container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 6.5rem;
+  }
+  
+  p{
+    text-align: center;
+    margin: 0.5rem;
+ }
+
+  #ubicacion{
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+
+ .barritaD {
+    border-right: 2px solid black;
+    margin-left: 5rem;
+  }
+  .barritaI {
+    border-left: 2px solid black;
+    margin-right: 5rem;
+  }
+
+  .contacto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+
+

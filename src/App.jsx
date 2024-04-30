@@ -1,11 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import NavBar from './components/navBar'
+import Footer from './components/Footer'
+import Banner from './components/banner'
+import Gallery from './components/gallery'
+import Cards from './components/cards'
+
 
 function App() {
   return (
-    <h1>Que no cunda el panico.</h1>
+    <main>
+      
+      <NavBar />
+
+      <Banner />
+
+      <Gallery />
+
+      <Cards />
+
+      <Footer />
+      
+    </main>
   )
 }
 
