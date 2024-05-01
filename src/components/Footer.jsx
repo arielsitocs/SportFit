@@ -47,7 +47,7 @@ export default function Footer() {
         </div>
 
           <div className="col-md-4">
-            <p >© Copirrai Si copiai esta wea te wa denunciar hijolamaraca</p>
+            <p >© SportFit 2024. Todos los derechos reservados.</p>
           </div>
 
       </div>

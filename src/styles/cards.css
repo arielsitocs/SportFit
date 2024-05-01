@@ -1,10 +1,22 @@
 .product-section {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
     padding: 2%;
     font-family: "Exo 2", sans-serif;
+  }
 
+  .product-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    h1 {
+      width: fit-content;
+      padding: 10px;
+      border-radius: 7px;
+      background-color: #b62727;
+      color: white;
+    }
   }
   
   .column {

@@ -28,11 +28,12 @@
             background-color: #b62727;
             border: none;
             color: white;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
         }
 
         button:hover {
             transform: scale(1.2);
+            background-color: #d65353;
         }
 
     }

@@ -1,14 +1,19 @@
 import '../styles/banner.css'
+import { useEffect } from 'react';
 
 export default function Banner() {
-    var boton = document.getElementById("explorar")
-    var productos = document.getElementById("productos")
+    useEffect(() => {
+        var boton = document.getElementById("explorar");
+        var productos = document.getElementById("productos");
 
-    if(boton && productos) {
-        boton.addEventListener("click", function() {
-            productos.scrollIntoView({behavior: 'smooth'})
-        })
-    }
+        if(boton && productos) {
+            boton.addEventListener("click", function() {
+                productos.scrollIntoView({behavior: 'smooth'});
+            });
+        } else {
+            console.log("Error al cargar componentes.");
+        }
+    }, []);
 
     return (
         <div className='bannerPic'>
