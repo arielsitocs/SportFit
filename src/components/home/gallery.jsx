@@ -1,4 +1,4 @@
-import '../styles/gallery.css'
+import '../../styles/gallery.css'
 
 export default function gallery() {
     const products = [

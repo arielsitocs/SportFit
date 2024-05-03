@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/navBar.css';
+import { useState } from 'react';
 import gymlogo from '../assets/img/logo.png';
 import menuicon from '../assets/img/menu-icon.png';
 import user from '../assets/img/user.png';
@@ -16,17 +15,17 @@ export default function NavBar() {
     const toggleUserMenu = () => {
         setUserOpen(!menuUserOpen);
     };
-
+    
     return (
         <main>
             <div className="navBar">
                 <div className="left">
                     <div className="nav-logo">
-                        <img src={gymlogo} className='user-icon' />
+                        <a href="/"><img src={gymlogo} className='nav-icon' /></a>
                     </div>
 
                     <div className="nav-menu" onClick={toggleMainMenu}>
-                        <img src={menuicon} id='nav-menu' />
+                        <img src={menuicon} id='nav-menu-icon' />
                     </div>
                 </div>
 
@@ -38,8 +37,8 @@ export default function NavBar() {
 
                 <div className="right">
                     <div className="buttons">
-                        <button>Entrar</button>
-                        <button>Registrarse</button>
+                        <a href="/login"><button>Entrar</button></a>
+                        <a href="/registro"><button>Registrarse</button></a>
                     </div>
 
                     <div className="user" onClick={toggleUserMenu}>

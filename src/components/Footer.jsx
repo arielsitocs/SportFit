@@ -30,26 +30,22 @@ export default function Footer() {
               <p>Instagram</p>
               </a>
             </div>
-
-
             <div>
-              <a href="https://www.instagram.com">
+              <a href="https://www.linkedin.com">
               <p >LinkedIn</p>
               </a>
             </div>
 
             <div>
-              <a href="https://www.instagram.com">
+              <a href="https://www.whatsapp.com/?lang=es_LA">
               <p >WhatsApp</p>
               </a>
             </div>
           </div>
         </div>
-
           <div className="col-md-4">
             <p >© SportFit 2024. Todos los derechos reservados.</p>
           </div>
-
       </div>
     </footer>
       );

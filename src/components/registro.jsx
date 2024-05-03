@@ -1,11 +1,8 @@
 import '../styles/registro.css'
-import NavBar from './navBar'
-import Footer from './Footer'
 
 export default function Registro() { 
     return (
         <main>
-            <NavBar />
             <div className="registro">
                 <h1>Registro de Usuario</h1>
                 <form action="" className='formulario'>
@@ -37,10 +34,7 @@ export default function Registro() {
                         <h2>¿Ya tienes una cuenta? <a href="">Ingresa aquí</a></h2>
                     </div>
                 </form>
-
-
             </div>
-            <Footer />
         </main>
     )
 }

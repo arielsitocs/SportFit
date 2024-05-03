@@ -1,31 +1,26 @@
 import './App.css'
-import { BrowserRouter as Router } from 'react-router-dom'
-import NavBar from './components/navBar'
-import Footer from './components/Footer'
-import Banner from './components/banner'
-import Gallery from './components/gallery'
-import Cards from './components/cards'
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import Home from './components/home/home'
 import Login from './components/login'
 import Registro from './components/registro'
-import Perfil from './components/perfil'
+import NavBar from './components/navBar'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <main> 
-      <NavBar />
+    <div>
+      <BrowserRouter>
+        <NavBar/>
 
-      <Banner />
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/registro" element={<Registro/>}/>
+        </Routes>
 
-      <Gallery />
-
-      <Cards />
-
-      <Footer />
-
-      <Login/>
-
-      <Registro/>
-    </main>
+        <Footer/>
+      </BrowserRouter>
+    </div>
   )
 }
 

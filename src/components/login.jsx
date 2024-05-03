@@ -1,11 +1,8 @@
-import NavBar from "./navBar"
-import Footer from "./Footer"
 import '../styles/login.css';
 
 export default function Login() {
     return (
         <div>
-            <NavBar />
             <div className="login">
                 <div className="tituloLogin">
                     <h1>Login de Usuario</h1>
@@ -15,7 +12,7 @@ export default function Login() {
                     <div class="card-body px-4 py-5 px-md-5" id="antesForm">
                         <form action="" className="formu">
                             <div className="usuario">
-                                <label htmlFor="usuario">Ingrese nombre de usuario</label>
+                                <label htmlFor="usuario">Nombre se Usuario</label>
                                 <input type="text" name="usuario" id="usu"></input>
                             </div>
                             <div className="contrasena">
@@ -31,7 +28,6 @@ export default function Login() {
                                 </div>
 
                                 <div className="register">
-                                    
                                     <a href="">Registrate aquí</a>
                                 </div>
                         </form>
@@ -39,7 +35,6 @@ export default function Login() {
 
                 </div>
             </div>
-            <Footer />
         </div>
     )
 } 

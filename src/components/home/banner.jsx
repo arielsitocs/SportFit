@@ -1,4 +1,4 @@
-import '../styles/banner.css'
+import '../../styles/banner.css'
 import { useEffect } from 'react';
 
 export default function Banner() {

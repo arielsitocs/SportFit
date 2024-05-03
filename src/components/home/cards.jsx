@@ -1,4 +1,4 @@
-import '../styles/cards.css';
+import '../../styles/cards.css';
 
 export default function cards() {
   const products = [
