@@ -24,18 +24,23 @@
   }
   
   .card {
+    display: flex;
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    margin: 7px;
     margin-bottom: 20px;
+    width: 90%;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
   }
   
   .card-image {
-    width: 100%;
+    width: 60%;
     height: auto;
     display: block;
+    justify-content: center;
+    align-items: center;
   }
   
   .card-body {
@@ -54,6 +59,8 @@
     height: 40px;
     padding-top: 2px;
     text-align: justify;
+    font-size: large;
+    margin-bottom: auto;
   }
   
   .card-image{
@@ -62,4 +69,20 @@
 
   .titulo{
     text-align: center;
+  }
+
+  .btn-contratar{
+    align-items: baseline;
+    width: 80%;
+    background-color: #B62727;
+    border: none;
+    border-radius: 3px;
+    padding: 10px;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+    color: aliceblue;
+    font-family: "Exo 2", sans-serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
   }

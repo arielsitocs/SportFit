@@ -47,6 +47,10 @@
     /* Ajustar la imagen al cuadro */
   }
 
+  .grid-item img:hover{
+    cursor: pointer;
+  }
+
   .product-name {
     position: absolute;
     bottom: 5px;

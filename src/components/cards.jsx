@@ -5,7 +5,7 @@ export default function cards() {
     {
       name: 'Nutricionista',
       description: 'Asegura una dieta balanceada dependiendo del objetivo que quieras lograr.',
-      imageUrl: 'https://cc834f82.rocketcdn.me/storage/2023/05/elegir-nutricionista-1.webp'
+      imageUrl: 'https://nationalpti.org/wp-content/uploads/2014/02/Personal-Trainer.jpg'
     },
 
     {
@@ -28,6 +28,7 @@ export default function cards() {
               <div className="card-body">
                 <h3 className="card-title">{product.name}</h3>
                 <p className="card-description">{product.description}</p>
+                <button className='btn-contratar'>Contratar</button>
               </div>
             </div>
           ))}
@@ -39,6 +40,7 @@ export default function cards() {
               <div className="card-body">
                 <h3 className="card-title">{product.name}</h3>
                 <p className="card-description">{product.description}</p>
+                <button className='btn-contratar'>Contratar</button>
               </div>
             </div>
           ))}
