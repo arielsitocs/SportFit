@@ -8,22 +8,22 @@ export default function Registro() {
                 <form action="" className='formulario'>
                     <div className="correo">
                         <label htmlFor="correo">Correo</label>
-                        <input type="email" id='correo' />
+                        <input type="email" id='correo' required />
                     </div>
 
                     <div className="usuario">
                         <label htmlFor="usuario">Nombre de Usuario</label>
-                        <input type="text" id='usuario' />
+                        <input type="text" id='usuario' required />
                     </div>
 
                     <div className="contrasena">
                         <label htmlFor="contrasena">Contraseña</label>
-                        <input type="password" id='contrasena' />
+                        <input type="password" id='contrasena' required/>
                     </div>
 
                     <div className="contrasenaConfirm">
                         <label htmlFor="contrasenaConfirm">Confirmar contaseña</label>
-                        <input type="password" id='contrasenaConfirm' />
+                        <input type="password" id='contrasenaConfirm' required />
                     </div>
 
                     <div className="registrarse">
@@ -31,7 +31,7 @@ export default function Registro() {
                     </div>
 
                     <div className="links">
-                        <h2>¿Ya tienes una cuenta? <a href="">Ingresa aquí</a></h2>
+                        <h2>¿Ya tienes una cuenta? <a href="/login">Ingresa aquí</a></h2>
                     </div>
                 </form>
             </div>

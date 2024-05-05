@@ -13,11 +13,11 @@ export default function Login() {
                         <form action="" className="formu">
                             <div className="usuario">
                                 <label htmlFor="usuario">Nombre se Usuario</label>
-                                <input type="text" name="usuario" id="usu"></input>
+                                <input type="text" name="usuario" id="usu" required></input>
                             </div>
                             <div className="contrasena">
                                 <label htmlFor="contrasena" >Ingrese contraseña</label>
-                                <input type="password" name="password" id="password"></input>
+                                <input type="password" name="password" id="password" required></input>
                             </div>
                                 <div className="btnIn">
                                     <button className="btnIngresar">Ingresar</button>
@@ -28,7 +28,7 @@ export default function Login() {
                                 </div>
 
                                 <div className="register">
-                                    <a href="">Registrate aquí</a>
+                                    <a href="/registro">Registrate aquí</a>
                                 </div>
                         </form>
                     </div>
