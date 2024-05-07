@@ -1,26 +1,30 @@
 import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './components/home/home'
+import Login from './components/login'
+import Registro from './components/registro'
+import Perfil from './components/perfil/perfil'
+import Productos from './components/productos/productos'
 import NavBar from './components/navBar'
 import Footer from './components/Footer'
-import Banner from './components/banner'
-import Gallery from './components/gallery'
-import Cards from './components/cards'
-
 
 function App() {
   return (
-    <main>
-      
-      <NavBar />
+    <div>
+      <BrowserRouter>
+        <NavBar/>
 
-      <Banner />
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/login" element={<Login/>}/>
+          <Route path="/registro" element={<Registro/>}/>
+          <Route path="/perfil" element={<Perfil/>}/>
+          <Route path="/productos" element={<Productos/>}/>
+        </Routes>
 
-      <Gallery />
-
-      <Cards />
-
-      <Footer />
-      
-    </main>
+        <Footer/>
+      </BrowserRouter>
+    </div>
   )
 }
 

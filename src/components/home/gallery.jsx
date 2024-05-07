@@ -1,4 +1,4 @@
-import '../styles/gallery.css'
+import '../../styles/gallery.css'
 
 export default function gallery() {
     const products = [
@@ -16,7 +16,7 @@ export default function gallery() {
                 <h1>Productos destacados</h1>
             </div>
 
-          <div className="grid-container">
+          <div className="grid-container" id='productos'>
             {products.map((product, index) => (
               <div key={index} className="grid-item">
                 <img src={product.imageUrl} alt={product.name} />

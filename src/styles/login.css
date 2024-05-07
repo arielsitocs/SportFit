@@ -1,0 +1,93 @@
+.tituloLogin {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.formu {
+    width: 400px;
+    padding: 20px;
+    background-color: #b62727;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label {
+            color: white;
+            font-size: x-large;
+            margin-bottom: 7px;
+        }
+
+        input {
+            height: 35px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btnIn {
+            display: flex;
+            align-items: center;
+        }
+
+        .btnIngresar {
+            width: 150px;
+            height: 40px;
+            margin-top: 15px;
+            background-color: #ffffff;
+            border: none;
+            color: black;
+            border-radius: 20px;
+            transition: transform 0.3s ease-in-out, background-color 0.3s ease;
+        }
+
+        .btnIngresar:hover {
+            transform: scale(1.1);
+            background-color: #d65353;
+            color: white;
+        }
+    }
+}
+
+.btnIn {
+    align-items: center;
+}
+
+.forgot {
+    align-items: center;
+
+    a {
+        text-decoration: none;
+        transition: color 0.2s ease;
+        margin-top: 5px;
+        margin-bottom: -7px;
+        color: black;
+    }
+    
+    a:hover {
+        color: white;
+    
+    }
+}
+
+.register {
+    align-items: center;
+
+    h2 {
+        margin-bottom: 8px;
+    }
+
+    a {
+        text-decoration: none;
+        transition: color 0.2s ease;
+        color: black;
+    }
+
+    a:hover {
+        color: white;
+    }
+}

@@ -1,0 +1,91 @@
+.productos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+
+    .productos-title {
+        margin-bottom: 30px;
+
+        h1 {
+            width: fit-content;
+            padding: 10px;
+            border-radius: 7px;
+            background-color: #b62727;
+            color: white;
+        }
+    }
+
+    .productos-content {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        grid-template-columns: repeat(2, 40%);
+        margin-top: 20px;
+    }
+}
+
+/* ESTILOS PARA COMPONENTE PRODUCTO */
+
+.producto {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(244, 244, 244);
+
+    .producto-top {
+        display: flex;
+        
+        .producto-foto {
+            width: 30%;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    
+        .producto-info {
+            padding: 10px;
+    
+            p {
+                margin: 0;
+                text-align: justify;
+                margin-top: 5px;
+            }
+
+            .producto-boton {
+                display: flex;
+                justify-content: center;
+                margin-top: 5px;
+
+                button {
+                    background-color: white;
+                    border: none;
+                    padding: 8px;
+                    margin-right: 15px;
+                    transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+                }
+    
+                button:hover {
+                    cursor: pointer;
+                    background-color: #d65353;
+                    color: white;
+                }
+            }
+
+            
+        }
+    }
+
+    .producto-bottom {
+        width: fit-content;
+        margin: auto;
+        
+        .producto-boton {
+
+         
+        }
+    }
+}
