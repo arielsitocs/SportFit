@@ -51,7 +51,7 @@ export default function NavBar() {
                 <ul>
                     <a href="/productos">Productos</a>
                     <a href="">Suscripciones</a>
-                    <a href="">Carro de Compras</a>
+                    <a href="/carro">Carro de Compras</a>
                 </ul>
             </div>
 

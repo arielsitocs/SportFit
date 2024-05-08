@@ -1,0 +1,26 @@
+/* ESTILOS PARA CARRO */
+
+.carro {
+    .carro-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    
+        h1 {
+            width: fit-content;
+            padding: 10px;
+            border-radius: 7px;
+            background-color: #b62727;
+            color: white;
+          }
+    }
+}
+
+/* ESTILOS PARA PRODUCTO DE CARRO */
+
+.producto {
+    
+}
+
