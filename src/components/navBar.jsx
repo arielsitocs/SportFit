@@ -58,7 +58,8 @@ export default function NavBar() {
             <div className={`user-menu ${menuUserOpen ? 'active' : ''}`}>
                 <ul>
                     <a href="/perfil">Mi Perfil</a>
-                    <a href="">Historial de Compras</a>
+                    <a href="/historial">Historial de Compras</a>
+                    <a href="/seguimiento">Seguimiento</a>
                     <a href="">Cerrar Sesión</a>
                 </ul>
             </div>

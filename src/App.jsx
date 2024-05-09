@@ -8,26 +8,30 @@ import Productos from './components/productos/productos'
 import Carro from './components/carro/carro'
 import NavBar from './components/navBar'
 import Footer from './components/Footer'
-
+import Historial from './components/historial'
+import Seguimiento from './components/seguimiento'
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <NavBar/>
+        <NavBar />
 
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/registro" element={<Registro/>}/>
-          <Route path="/perfil" element={<Perfil/>}/>
-          <Route path="/productos" element={<Productos/>}/>
-          <Route path="/carro" element={<Carro/>}/>
+          <Route path="/" element={<Home />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/registro" element={<Registro />}/>
+          <Route path="/perfil" element={<Perfil />}/>
+          <Route path="/productos" element={<Productos />}/>
+          <Route path="/carro" element={<Carro />}/>
+          <Route path="/historial" element={<Historial />}/>
+          <Route path="/seguimiento" element={<Seguimiento />}/>
         </Routes>
 
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </div>
   )
 }
 
 export default App
+

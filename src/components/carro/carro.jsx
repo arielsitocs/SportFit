@@ -1,7 +1,10 @@
 import '../../styles/carro.css'
 import ejemplo from '../../assets/img/hombre.webp'
+import Producto from './productoCarro'
 
 export default function Carro() {
+    var total = 0;
+
     const productos = [
         {
             "codigo": "101",
@@ -43,18 +46,39 @@ export default function Carro() {
                 <h1>Tu Carro de Compras</h1>
             </div>
             <div className="carro-content">
-                {
-                    productos.map((producto) => (
-                        <div key={producto.codigo}>
-                            <h1>{producto.nombre}</h1>
-                            <p>{producto.descripcion}</p>
-                            <img src={producto.imagen} alt={producto.nombre} />
-                            <p>Stock: {producto.stock}</p>
-                            <p>Precio: {producto.precio}</p>
+                <div className="compras">
+                    {
+                        productos.map((producto) => (
+                            <Producto key={producto.codigo} imagen={producto.imagen} nombre={producto.nombre} descripcion={producto.descripcion}
+                                precio={producto.precio} cantidad={1} />
+                        ))
+                    }
+                </div>
+                <div className="carro-resultado">
+                    <div className="carro-resultado-title">
+                        <h2>Resultado de Compra</h2>
+                        <div className="carro-resultado-content">
+                            {
+                                productos.map((productos) => (
+                                    <h4>{productos.nombre} x{} ${productos.precio}</h4>
+                                ))
+                            }
+                            {
+                                productos.map((producto) => {
+                                    total += producto.precio;
+                                })
+                            }
+                            <p>TOTAL: ${total}</p>
+
+                            <div className="carro-resultado-pagar">
+                                <button>PAGAR</button>
+                            </div>
                         </div>
-                    ))
-                }
+
+                    </div>
+                </div>
             </div>
+
         </div>
     )
 }

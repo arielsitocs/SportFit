@@ -1,0 +1,20 @@
+.historial-item {
+    border-top: 1px solid rgba(160, 160, 160, 0.140); /* Color y grosor del borde */
+    border-bottom: 1px solid rgb(160, 160, 160, 0.140); /* Color y grosor del borde */
+
+    padding: 10px; /* Espacio interno del elemento */
+    text-align: center;
+    background-color: #f5f5f544;
+}
+
+.historial-item img {
+    border: 0.5px rgba(160, 160, 160, 0.459);
+    border-style: solid;
+    max-width: 200px; /* Establecer un ancho máximo para la imagen */
+    height: auto; /* Para mantener la proporción de la imagen */
+    margin-right: 10px; /* Espacio a la derecha de la imagen */
+}
+
+.item-details {
+    flex-grow: 1; /* Para expandir este div y ocupar todo el espacio disponible */
+}

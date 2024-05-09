@@ -1,6 +1,8 @@
 import '../../styles/gallery.css'
 
 export default function gallery() {
+    /* CONSUMIR API */
+    
     const products = [
         {name: 'Zapatillas de Ballet', imageUrl: 'https://saborlatinochile.cl/res/img/zapatos-ballet.jpg'},
         {name: 'Vestido de Baile Latino', imageUrl: 'https://saborlatinochile.cl/res/img/Vestido-Baile-Latino.jpg'},

@@ -1,26 +1,140 @@
 /* ESTILOS PARA CARRO */
 
 .carro {
+    .carro-content {
+        display: flex;
+    }
+
+    .carro-resultado {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 30%;
+        height: fit-content;
+        margin-right: 10px;
+        border: 1px solid black;
+        padding: 15px;
+
+        .carro-resultado-title {
+            text-align: center;
+
+            h2 {
+                margin-bottom: 10px;
+            }
+        }
+
+        .carro-resultado-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            h4 {
+                margin-bottom: 10px;
+            }
+
+
+            .carro-resultado-pagar {
+                margin-top: 10px;
+
+                button {
+                    width: 100px;
+                    background-color: rgb(245, 245, 245);
+                    border: none;
+                    border-radius: 3px;
+                    padding: 8px;
+                    transition: transform 0.2s ease-in-out, background-color 0.2s ease;
+                }
+
+                button:hover {
+                    cursor: pointer;
+                    transform: scale(1.06);
+                    background-color: #d65353;
+                    color: white;
+                }
+            }
+        }
+
+    }
+
     .carro-title {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: 30px;
         margin-bottom: 30px;
-    
+
         h1 {
             width: fit-content;
             padding: 10px;
             border-radius: 7px;
             background-color: #b62727;
             color: white;
-          }
+        }
+    }
+
+    .compras {
+        width: 85%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
 }
 
 /* ESTILOS PARA PRODUCTO DE CARRO */
 
-.producto {
-    
-}
+.productoCarro {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    width: 95%;
+    margin-bottom: 15px;
+    background-color: rgb(245, 245, 245);
 
+    .producto-imagen {
+        img {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    .producto-detalle {
+        display: flex;
+        margin-left: 10px;
+        flex-direction: column;
+
+        p {
+            margin: 0;
+            margin-top: 10px;
+            text-align: justify;
+        }
+    }
+
+    .producto-info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin-left: auto;
+        padding: 5px;
+
+        .producto-cantidad {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 15px;
+
+            div {
+                display: flex;
+
+                button {
+                    width: 40px;
+                    height: 30px;
+                    margin: 5px;
+                    margin-top: 10px;
+                }
+
+            }
+        }
+    }
+}
