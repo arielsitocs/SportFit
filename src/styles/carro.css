@@ -33,9 +33,15 @@
                 margin-bottom: 10px;
             }
 
+            p {
+                margin-top: 20px;
+            }
+
 
             .carro-resultado-pagar {
-                margin-top: 10px;
+                margin-top: 20px;
+                display: flex;
+                justify-content: center;
 
                 button {
                     width: 100px;
@@ -52,6 +58,11 @@
                     background-color: #d65353;
                     color: white;
                 }
+            }
+
+            .producto-resultado {
+                background-color: rgb(245, 245, 245);
+                padding: 10px;
             }
         }
 
@@ -79,62 +90,60 @@
         align-items: center;
         flex-direction: column;
     }
-}
 
-/* ESTILOS PARA PRODUCTO DE CARRO */
-
-.productoCarro {
-    display: flex;
-    flex-direction: row;
-    padding: 10px;
-    width: 95%;
-    margin-bottom: 15px;
-    background-color: rgb(245, 245, 245);
-
-    .producto-imagen {
-        img {
-            width: 150px;
-            height: 150px;
-        }
-    }
-
-    .producto-detalle {
+    .productoCarro {
         display: flex;
-        margin-left: 10px;
-        flex-direction: column;
-
-        p {
-            margin: 0;
-            margin-top: 10px;
-            text-align: justify;
+        flex-direction: row;
+        padding: 10px;
+        width: 95%;
+        margin-bottom: 15px;
+        background-color: rgb(245, 245, 245);
+    
+        .producto-imagen {
+            img {
+                width: 150px;
+                height: 150px;
+            }
         }
-    }
-
-    .producto-info {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        margin-left: auto;
-        padding: 5px;
-
-        .producto-cantidad {
+    
+        .producto-detalle {
             display: flex;
-            align-items: center;
+            margin-left: 10px;
             flex-direction: column;
-            margin-top: 15px;
-
-            div {
+    
+            p {
+                margin: 0;
+                margin-top: 10px;
+                text-align: justify;
+            }
+        }
+    
+        .producto-info {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-left: auto;
+            padding: 5px;
+    
+            .producto-cantidad {
                 display: flex;
-
-                button {
-                    width: 40px;
-                    height: 30px;
-                    margin: 5px;
-                    margin-top: 10px;
+                align-items: center;
+                flex-direction: column;
+                margin-top: 15px;
+    
+                div {
+                    display: flex;
+    
+                    button {
+                        padding: 10px;
+                    }
+    
                 }
-
             }
         }
     }
 }
+
+/* ESTILOS PARA PRODUCTO DE CARRO */
+

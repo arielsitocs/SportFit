@@ -1,35 +1,54 @@
 import '../styles/seguimiento.css';
+import carro from './carro';
 
 export default function generarGrid() {
+    //capturar datos del carro
+    //pasar nombres en cada celda de la tabla en un ciclo
+
     return (
 
-        <div class="card-body">
-            <div className='busqueda'>
-                <input type="text" placeholder='Ingrese codigo' className='texto'/>
+        <div class="card-body" >
+            <div id="carta">
+                <div className='busqueda'>
+                    <input type="text" placeholder='Ingrese codigo' className='texto' />
                     <button className='btnBuscar'>Buscar</button>
-            </div>
-            <div class="tabla-responsiva">
-                <table width="100%" id="tabla">
-                    <thead>
-                        <tr>
-                            <td>Código</td>
-                            <td>Producto</td>
-                            <td>Cantidad</td>
-                            <td>Fecha Ingreso</td>
-                            <td>Estado</td>
-                            <td>Monto</td>
-                        </tr>
+                </div>
+                <table className="tablita">
+                    <thead className="titulos">
+                        <th>Codigo</th>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Fecha ingreso</th>
+                        <th>Estado</th>
+                        <th>Monto</th>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>001</td>
-                            <td>Camisa e payaso</td>
-                            <td>15</td>
-                            <td>05/05/2024</td>
-                            <td>En Emision</td>
-                            <td>$28.500</td>
-                        </tr>
-                    </tbody>
+
+                    <tr className="contenido">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr className="contenido">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+
+                    <tr className="contenido">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
                 </table>
             </div>
         </div>

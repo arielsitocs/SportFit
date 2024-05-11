@@ -1,28 +1,41 @@
-.tabla-responsiva table {
-    width: 100%;
-    border-collapse: collapse;
-
-} 
-
-.tabla-responsiva table, .tabla-responsiva th, .tabla-responsiva td {
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 5px 0px 0px 5px;
-}
-
-.tabla-responsiva th, .tabla-responsiva td {
-    padding: 8px; /*tamaño de celdax*/
+.tablita {
     text-align: center;
-}
+    width: 100%;
+    height: auto;
+    background-color: rgba(190, 191, 191, 0.194);
+    border-collapse: separate;
+    margin-bottom: 27.9rem;
+  }
+  
+  .titulos {
+    font-size: 20px;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background-color: rgb(166, 166, 165);
+  }
+  
+  .tablita td {
+    border: 1px solid rgb(1, 1, 1);
+    padding: 1rem; 
+    background-color: rgb(222, 222, 222);
+  }
+
+  .tablita th{
+    border: 1px solid rgb(1, 1, 1);
+    padding: 1rem;
+  }
 
 .busqueda{
     text-align: center;
     padding: 15px;
+    margin-top: 5rem;
     
     .texto{
-        width: 25%;
+        width: 30%;
         height: auto;
-        background-color: rgba(160, 170, 179, 0.293);
-
+        background-color: rgb(255, 255, 255);
+        text-align: center;
     }
     .btnBuscar {
         margin: 1rem;
@@ -30,6 +43,15 @@
         height: auto;
     }
 }
+#carta {
+  background-color: rgb(145, 145, 145);
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+
+
 
 
 
