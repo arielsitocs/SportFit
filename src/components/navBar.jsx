@@ -50,7 +50,7 @@ export default function NavBar() {
             <div className={`main-menu ${menuMainOpen ? 'active' : ''}`}>
                 <ul>
                     <a href="/productos">Productos</a>
-                    <a href="">Suscripciones</a>
+                    <a href="/servicios">Servicios</a>
                     <a href="/carro">Carro de Compras</a>
                 </ul>
             </div>

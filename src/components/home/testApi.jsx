@@ -1,7 +1,5 @@
 import { useFetch } from '../../useFetch.js'
 
-
-
 export default function testApi() {
     const { data, loading } = useFetch("https://www.saborlatinochile.cl/duoc/servicio_web_sportfit.php")
 

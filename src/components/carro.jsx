@@ -28,9 +28,6 @@ export default function Carro() {
         const nuevoTotal = total - product.precio;
         setTotal(Math.round(nuevoTotal));
         setIva(Math.round(nuevoTotal * 0.19));
-
-
-        console.log(iva)
     }
 
     return (

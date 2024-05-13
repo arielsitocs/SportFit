@@ -10,6 +10,8 @@ import NavBar from './components/navBar'
 import Footer from './components/Footer'
 import Historial from './components/historial'
 import Seguimiento from './components/seguimiento'
+import Servicios from './components/servicios/servicios' 
+
 function App() {
   return (
     <div>
@@ -25,6 +27,7 @@ function App() {
           <Route path="/carro" element={<Carro />}/>
           <Route path="/historial" element={<Historial />}/>
           <Route path="/seguimiento" element={<Seguimiento />}/>
+          <Route path='/servicios' element={<Servicios />}></Route>
         </Routes>
 
         <Footer />
