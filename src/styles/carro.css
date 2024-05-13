@@ -34,7 +34,7 @@
             }
 
             p {
-                margin-top: 20px;
+                margin-top: 12px;
             }
 
 
@@ -63,6 +63,16 @@
             .producto-resultado {
                 background-color: rgb(245, 245, 245);
                 padding: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+      
+
+                .eliminar {
+                    padding: 5px;
+                    border: none;
+                    margin-left: 5px;
+                }
             }
         }
 

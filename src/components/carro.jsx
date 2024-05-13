@@ -8,11 +8,17 @@ export default function Carro() {
     const [allProducts, setAllProducts] = useState([])
     const [total, setTotal] = useState(0)
     const [countProducts, setCountProducts] = useState(0)
-    
-    const añadirProducto = (product) => {
 
+    const añadirProducto = (product) => {
         setTotal(total + product.precio)
         setAllProducts([...allProducts, product])
+    }
+
+    const eliminarProducto = (product) => {
+        var index;
+
+        index = allProducts.findIndex((producto) => producto.codigo === product.codigo)
+        setAllProducts([...allProducts.slice(0, index), ...allProducts.slice(index + 1)]);
     }
 
     return (
@@ -46,15 +52,17 @@ export default function Carro() {
                     }
                 </div>
                 <div className="carro-resultado">
-                    <div className="carro-resultado-title"></div>
-                    <h2>Resultado de Compra</h2>
+                    <div className="carro-resultado-title">
+                        <h2>Resultado de Compra</h2>
+                    </div>
+
                     <div className="carro-resultado-content">
                         {
                             allProducts.length ? (
                                 <div>
                                     {
                                         allProducts.map((producto) => (
-                                            <p key={producto.codigo} className='producto-resultado'>{producto.nombre} ${producto.precio}</p>
+                                            <p key={producto.codigo} className='producto-resultado'>{producto.nombre} ${producto.precio} <button onClick={() => eliminarProducto(producto)} className='eliminar'>X</button></p>
                                         ))
                                     }
                                     <p className='total'>TOTAL: ${total}</p>
