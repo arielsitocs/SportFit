@@ -1,28 +1,28 @@
-const oracledb = require('oracledb');
+import oracledb from 'oracledb';
 
 async function conectarBaseDatos() {
     try {
-        const connection = oracledb.getConnection({
-            user: 'usuario',
-            password: 'contraseña',
-            connectString: 'urlConexión'
-        })
-        console.log("Conexión establecida")
-        return connection
+        const connection = await oracledb.getConnection({
+            user: 'amongus',
+            password: 'amongus',
+            connectString: 'localhost:1521/orcl'
+        });
+        console.log("Conexión establecida");
+        return connection;
     } catch(err) {
-        console.error("Error al conectar a Oracle: "+err)
+        console.error("Error al conectar a Oracle: " + err);
         throw err;
-    } finally {}
+    }
 }
 
 async function queryDataBase() {
-    const connection = await conectarBaseDatos()
+    const connection = await conectarBaseDatos();
 
     try {
-        const result = await connection.execute('SELECT * FROM tablagabohacelabd')
-        console.log("Resultado de la query: "+result.rows)
+        const result = await connection.execute('SELECT * FROM usuario');
+        console.log("Resultado de la query: " + result.rows);
     } catch(err) {
-        console.error("Error al ejecutar la query: "+err)
+        console.error("Error al ejecutar la query: " + err);
     } finally {
         // Cierra la conexión
         if (connection) {
@@ -36,4 +36,4 @@ async function queryDataBase() {
     }
 }
 
-queryDataBase()
+queryDataBase();
