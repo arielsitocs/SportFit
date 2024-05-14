@@ -1,8 +1,8 @@
-import { getConnection } from 'oracledb';
+const oracledb = require('oracledb');
 
 async function conectarBaseDatos() {
     try {
-        const connection = await getConnection({
+        const connection = oracledb.getConnection({
             user: 'usuario',
             password: 'contraseña',
             connectString: 'urlConexión'
