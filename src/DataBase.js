@@ -5,7 +5,7 @@ async function conectarBaseDatos() {
         const connection = await getConnection({
             user: 'usuario',
             password: 'contraseña',
-            stringConexion: 'urlConexion'
+            connectString: 'urlConexión'
         })
         console.log("Conexión establecida")
         return connection
