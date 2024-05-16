@@ -1,9 +1,11 @@
 .footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
   background-color: #b62727;
   color: #ffffff;
-  padding: 20px;
   font-family: "Exo 2", sans-serif;
-  width: 100%;
+  padding: 0.5rem;
 }
 
 .container {

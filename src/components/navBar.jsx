@@ -50,15 +50,16 @@ export default function NavBar() {
             <div className={`main-menu ${menuMainOpen ? 'active' : ''}`}>
                 <ul>
                     <a href="/productos">Productos</a>
-                    <a href="">Suscripciones</a>
-                    <a href="">Carro de Compras</a>
+                    <a href="/servicios">Servicios</a>
+                    <a href="/carro">Carro de Compras</a>
                 </ul>
             </div>
 
             <div className={`user-menu ${menuUserOpen ? 'active' : ''}`}>
                 <ul>
                     <a href="/perfil">Mi Perfil</a>
-                    <a href="">Historial de Compras</a>
+                    <a href="/historial">Historial de Compras</a>
+                    <a href="/seguimiento">Seguimiento</a>
                     <a href="">Cerrar Sesión</a>
                 </ul>
             </div>

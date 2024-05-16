@@ -1,0 +1,57 @@
+.tablita {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-color: rgba(190, 191, 191, 0.194);
+    border-collapse: separate;
+    margin-bottom: 27.9rem;
+  }
+  
+  .titulos {
+    font-size: 20px;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background-color: rgb(166, 166, 165);
+  }
+  
+  .tablita td {
+    border: 1px solid rgb(1, 1, 1);
+    padding: 1rem; 
+    background-color: rgb(222, 222, 222);
+  }
+
+  .tablita th{
+    border: 1px solid rgb(1, 1, 1);
+    padding: 1rem;
+  }
+
+.busqueda{
+    text-align: center;
+    padding: 15px;
+    margin-top: 5rem;
+    
+    .texto{
+        width: 30%;
+        height: auto;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+    }
+    .btnBuscar {
+        margin: 1rem;
+        width: 100px;
+        height: auto;
+    }
+}
+#carta {
+  background-color: rgb(145, 145, 145);
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+
+
+
+
+

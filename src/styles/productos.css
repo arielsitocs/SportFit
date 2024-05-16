@@ -38,16 +38,15 @@
         display: flex;
         
         .producto-foto {
-            width: 30%;
-
             img {
-                width: 100%;
-                height: 100%;
+                height: 170px;
+                width: 170px;
             }
         }
     
         .producto-info {
             padding: 10px;
+            width: 100%;
     
             p {
                 margin: 0;
@@ -82,10 +81,5 @@
     .producto-bottom {
         width: fit-content;
         margin: auto;
-        
-        .producto-boton {
-
-         
-        }
     }
 }
