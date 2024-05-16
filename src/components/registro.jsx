@@ -1,5 +1,5 @@
 import '../styles/registro.css'
-// import { guardarUsuario } from '../DataBase'
+// import { guardarUsuario } from '../database/registrarUsu.js'
 
 export default function Registro() {
     const manejarRegistro = async () => {
@@ -34,7 +34,7 @@ export default function Registro() {
                     </div>
 
                     <div className="usuario">
-                        <label htmlFor="usuario">Nombre de Usuario</label>
+                        <label htmlFor="usuario">Nombre Completo</label>
                         <input type="text" id='usuario' required />
                     </div>
 
