@@ -24,8 +24,4 @@ async function guardarUsuario(correo, usuario, contrasena) {
     }
 }
 
-mostrarDatos();
-
-guardarUsuario('ariel@gmail.com', 'arielsitox', 'patroclo1234');
-
 export { guardarUsuario }
