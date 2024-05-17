@@ -1,11 +1,14 @@
 import '../styles/registro.css'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Registro() {
   const [correo, setCorreo] = useState('');
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [confContrasena, setConfContrasena] = useState('');
+
+  const navigate = useNavigate();
 
   const manejarRegistro = async (event) => {
     event.preventDefault();
@@ -26,9 +29,7 @@ export default function Registro() {
 
       if (response.ok) {
         alert("Usuario registrado.");
-        setCorreo('');
-        setUsuario('');
-        setContrasena('');
+        navigate('/login');
       } else {
         alert("Error al registrar el usuario.");
         console.log(response);

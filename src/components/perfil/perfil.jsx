@@ -1,8 +1,12 @@
 import '../../styles/perfil.css'
 import hombre from '../../assets/img/hombre.webp'
 import Suscripcion from '../perfil/suscripcion'
+import { AppContext } from '../../App'
+import { useContext } from 'react'
 
 export default function Perfil() {
+    const { usu, setUsu } = useContext(AppContext);
+
     return (
         <div className='main'>
             <div className="perfil-top">
@@ -11,7 +15,7 @@ export default function Perfil() {
                 </div>
 
                 <div className="perfil-info">
-                    <h2>Carlos Miguel Jiménez</h2>
+                    <h2>{usu}</h2>
                     <h3>Cliente SportFit</h3>
                 </div>
             </div>

@@ -7,6 +7,7 @@ import { ingresarUsuario } from './loginUsu.js';
 const app = express();
 const port = 3000;
 
+
 // Middleware para permitir CORS
 app.use(cors());
 
@@ -29,7 +30,6 @@ app.post('/registro', async (req, res) => {
 // Manejar el ingreso de usuario
 app.post('/login', async (req, res) => {
     const { usuario, contrasena } = req.body;
-
     try {
         await ingresarUsuario(usuario, contrasena);
         res.status(200).send('Usuario ingresado exitosamente.');

@@ -1,12 +1,16 @@
 import '../styles/navBar.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import gymlogo from '../assets/img/logo.png';
 import menuicon from '../assets/img/menu-icon.png';
 import user from '../assets/img/user.png';
+import { AppContext } from '../App';
 
 export default function NavBar() {
     const [menuMainOpen, setMenuOpen] = useState(false);
     const [menuUserOpen, setUserOpen] = useState(false);
+
+    const { login, setLogin } = useContext(AppContext);
+    const { usu, setUsu } = useContext(AppContext);
 
     const toggleMainMenu = () => {
         setMenuOpen(!menuMainOpen);
@@ -15,7 +19,7 @@ export default function NavBar() {
     const toggleUserMenu = () => {
         setUserOpen(!menuUserOpen);
     };
-    
+
     return (
         <main>
             <div className="navBar">
@@ -37,30 +41,56 @@ export default function NavBar() {
 
                 <div className="right">
                     <div className="buttons">
-                        <a href="/login"><button>Entrar</button></a>
-                        <a href="/registro"><button>Registrarse</button></a>
+                        {
+                            login ?
+                                <p>¡Bienvenido {usu}!</p>
+                                :
+                                <div>
+                                    <a href="/login"><button>Entrar</button></a>
+                                    <a href="/registro"><button>Registrarse</button></a>
+                                </div>
+                        }
+
                     </div>
 
-                    <div className="user" onClick={toggleUserMenu}>
-                        <img src={user} className='user-icon' />
-                    </div>
+                    {
+                        login ? 
+                        <div className="user" onClick={toggleUserMenu}>
+                            <img src={user} className='user-icon' />
+                        </div> 
+                        :
+                        <span></span>
+                    }
+
                 </div>
             </div>
 
             <div className={`main-menu ${menuMainOpen ? 'active' : ''}`}>
                 <ul>
-                    <a href="/productos">Productos</a>
-                    <a href="/servicios">Servicios</a>
-                    <a href="/carro">Carro de Compras</a>
+                    {
+                        login ?
+                            <ul>
+                                <a href="/productos">Productos</a>
+                                <a href="/servicios">Servicios</a>
+                                <a href="/carro">Carro de Compras</a>
+                            </ul>
+                            :
+                            <div>
+                                <a href="/productos">Productos</a>
+                                <a href="/servicios">Servicios</a>
+                            </div>
+                    }
+
                 </ul>
             </div>
+
 
             <div className={`user-menu ${menuUserOpen ? 'active' : ''}`}>
                 <ul>
                     <a href="/perfil">Mi Perfil</a>
                     <a href="/historial">Historial de Compras</a>
                     <a href="/seguimiento">Seguimiento</a>
-                    <a href="">Cerrar Sesión</a>
+                    <a href="" onClick={() => setLogin(false)}>Cerrar Sesión</a>
                 </ul>
             </div>
         </main>

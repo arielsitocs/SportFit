@@ -36,6 +36,7 @@
 .servicio {
     display: flex;
     background-color: rgb(244, 244, 244);
+    padding: 10px;
 
     .servicio-imagen {
         width: 35%;

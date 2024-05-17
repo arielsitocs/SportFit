@@ -10,29 +10,52 @@ import NavBar from './components/navBar'
 import Footer from './components/Footer'
 import Historial from './components/historial'
 import Seguimiento from './components/seguimiento'
-import Servicios from './components/servicios/servicios' 
+import Servicios from './components/servicios/servicios'
+import { useState, createContext, useEffect } from 'react'
+
+export const AppContext = createContext();
 
 function App() {
+  const [login, setLogin] = useState(() => {
+    const storedLogin = localStorage.getItem('login');
+    return storedLogin ? JSON.parse(storedLogin) : false;
+  });
+
+  // Almacenar el estado de login en el localStorage cada vez que cambie
+  useEffect(() => {
+    localStorage.setItem('login', JSON.stringify(login));
+  }, [login]);
+
+  //Recupera el usuario del localstorage
+  const [usu, setUsu] = useState(() => {
+    const storedUsu = localStorage.getItem('usuario');
+    return storedUsu ? JSON.parse(storedUsu) : false;
+  });
+
+
+
   return (
-    <div>
-      <BrowserRouter>
-        <NavBar />
+    <AppContext.Provider value={{ login, setLogin, usu, setUsu }}>
+      <div>
+        <BrowserRouter>
+          <NavBar />
 
-        <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/registro" element={<Registro />}/>
-          <Route path="/perfil" element={<Perfil />}/>
-          <Route path="/productos" element={<Productos />}/>
-          <Route path="/carro" element={<Carro />}/>
-          <Route path="/historial" element={<Historial />}/>
-          <Route path="/seguimiento" element={<Seguimiento />}/>
-          <Route path='/servicios' element={<Servicios />}></Route>
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/registro" element={<Registro />} />
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/productos" element={<Productos />} />
+            <Route path="/carro" element={<Carro />} />
+            <Route path="/historial" element={<Historial />} />
+            <Route path="/seguimiento" element={<Seguimiento />} />
+            <Route path='/servicios' element={<Servicios />}></Route>
+          </Routes>
 
-        <Footer />
-      </BrowserRouter>
-    </div>
+          <Footer />
+        </BrowserRouter>
+      </div>
+    </AppContext.Provider>
   )
 }
 

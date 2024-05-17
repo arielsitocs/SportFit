@@ -69,6 +69,10 @@
 
 .buttons {
     margin-right: 20px;
+
+    p {
+        color: white;
+    }
 }
 
 .buttons button {

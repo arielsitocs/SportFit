@@ -1,6 +1,7 @@
 import '../styles/login.css';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../App';
 
 export default function Login() {
   const [usuario, setUsuario] = useState('');
@@ -8,27 +9,40 @@ export default function Login() {
 
   const navigate = useNavigate();
 
+  const { login, setLogin } = useContext(AppContext);
+  const { usu, setUsu } = useContext(AppContext); 
+
+  //Comprobación del cambio del estado de login
+  useEffect(() => {
+    if (login) {
+      navigate('/');
+      console.log(login);
+      console.log(usu);
+    }
+  }, [login, navigate]);
+
   const manejarLogin = async (event) => {
     event.preventDefault();
 
     try {
-        const response = await fetch('http://localhost:3000/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ usuario, contrasena }), 
-        });
-  
-        if (response.ok) {
-            navigate('/')
-        } else {
-          alert("Usuario no encontrado.");
-        }
-      } catch (error) {
-        console.error("Error al intentar ingresar: " + error);
-        alert("Error al ingresar.");
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ usuario, contrasena }),
+      });
+
+      if (response.ok) {
+        setLogin(true);
+        setUsu(usuario);
+      } else {
+        alert('Usuario no encontrado.');
       }
+    } catch (error) {
+      console.error('Error al intentar ingresar:', error);
+      alert('Error al ingresar.');
+    }
   };
 
   return (
