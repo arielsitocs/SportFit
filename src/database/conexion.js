@@ -19,7 +19,7 @@ async function mostrarDatos() {
     const connection = await conectarBaseDatos();
 
     try {
-        const result = await connection.execute('SELECT * FROM usuario');
+        const result = await connection.execute('SELECT * FROM cliente');
         console.log("Resultado de la query: " + result.rows);
     } catch(err) {
         console.error("Error al seleccionar usuarios: " + err);

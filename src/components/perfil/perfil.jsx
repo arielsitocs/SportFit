@@ -5,7 +5,7 @@ import { AppContext } from '../../App'
 import { useContext } from 'react'
 
 export default function Perfil() {
-    const { usu, setUsu } = useContext(AppContext);
+    const { nombre, setNombre } = useContext(AppContext);
 
     return (
         <div className='main'>
@@ -15,7 +15,7 @@ export default function Perfil() {
                 </div>
 
                 <div className="perfil-info">
-                    <h2>{usu}</h2>
+                    <h2>{nombre}</h2>
                     <h3>Cliente SportFit</h3>
                 </div>
             </div>

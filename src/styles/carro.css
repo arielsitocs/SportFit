@@ -29,12 +29,24 @@
             align-items: center;
             flex-direction: column;
 
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
             h4 {
                 margin-bottom: 10px;
             }
 
             p {
                 margin-top: 12px;
+            }
+
+            input {
+                padding: 5px;
+                margin-top: 10px;
             }
 
 

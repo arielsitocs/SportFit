@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useState, createContext, useEffect } from 'react'
 import Home from './components/home/home'
 import Login from './components/login'
 import Registro from './components/registro'
@@ -11,7 +12,6 @@ import Footer from './components/Footer'
 import Historial from './components/historial'
 import Seguimiento from './components/seguimiento'
 import Servicios from './components/servicios/servicios'
-import { useState, createContext, useEffect } from 'react'
 
 export const AppContext = createContext();
 
@@ -27,15 +27,19 @@ function App() {
   }, [login]);
 
   //Recupera el usuario del localstorage
-  const [usu, setUsu] = useState(() => {
-    const storedUsu = localStorage.getItem('usuario');
-    return storedUsu ? JSON.parse(storedUsu) : false;
+  const [nombre, setNombre] = useState(() => {
+    const storedNom = localStorage.getItem('nombre');
+    return JSON.parse(storedNom);
   });
 
+  useEffect(() => {
+    localStorage.setItem('nombre', JSON.stringify(nombre));
+  }, [nombre]);
 
+  const[usuario, setUsuario] = useState('');
 
   return (
-    <AppContext.Provider value={{ login, setLogin, usu, setUsu }}>
+    <AppContext.Provider value={{ login, setLogin, nombre, setNombre, usuario, setUsuario }}>
       <div>
         <BrowserRouter>
           <NavBar />

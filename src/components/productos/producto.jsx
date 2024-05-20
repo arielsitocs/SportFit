@@ -1,6 +1,24 @@
 import '../../styles/productos.css'
+import { AppContext } from '../../App'
+import { useContext } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Producto(props) {
+
+    const { login, setLogin } = useContext(AppContext);
+
+    const navigate = useNavigate();
+
+    const manejarCompra = () => {
+        if(login) 
+        {
+            navigate('/carro')
+        } 
+        else 
+        {
+            navigate('/login')
+        }
+    }
 
     return (
         
@@ -16,7 +34,7 @@ export default function Producto(props) {
                     <p>${props.precio}</p>
 
                     <div className="producto-boton">
-                        <a href="/carro"><button>Comprar</button></a>
+                       <button onClick={manejarCompra}>Comprar</button>
                     </div>
                 </div>
             </div>

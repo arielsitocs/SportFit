@@ -1,17 +1,17 @@
 import { conectarBaseDatos, mostrarDatos } from './conexion.js'
 
-async function guardarUsuario(rut, correo, nombre, apellidos, contrasena) {
+async function ingresarOrden( valor, direccion, rut_cliente, codigo_producto) {
     const connection = await conectarBaseDatos();
 
     try {
         await connection.execute(
-            'INSERT INTO cliente (rut_cli, correo, nombre, apellidos, contrasena) VALUES (:rut, :correo, :nombre, :apellidos, :contrasena)', 
-            { rut, correo, nombre, apellidos, contrasena },
+            'INSERT INTO orden (valor, direccion, rut_cli, cod_prod) VALUES (:valor, :direccion, :rut_cliente, :codigo_producto)', 
+            { valor, direccion, rut_cliente, codigo_producto },
             { autoCommit: true }
         );
-        console.log("Usuario registrado.");
+        console.log("Orden ingresada.");
     } catch (err) {
-        console.error("Error al registrar: " + err);
+        console.error("Error al ingresar orden: " + err);
     } finally {
         if (connection) {
             try {
@@ -24,4 +24,4 @@ async function guardarUsuario(rut, correo, nombre, apellidos, contrasena) {
     }
 }
 
-export { guardarUsuario }
+export { ingresarOrden }

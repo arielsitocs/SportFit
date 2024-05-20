@@ -1,12 +1,13 @@
 import { conectarBaseDatos } from './conexion.js';
 
-async function ingresarUsuario(usuario, contrasena) {
+async function ingresarUsuario(nombre, contrasena) {
     const connection = await conectarBaseDatos();
+
 
     try {
         const result = await connection.execute(
-            'SELECT * FROM usuario WHERE usuario = :usuario AND contrasena = :contrasena',
-            { usuario, contrasena },
+            'SELECT * FROM cliente WHERE nombre = :nombre AND contrasena = :contrasena',
+            { nombre, contrasena },
             { autoCommit: true }
         );
 

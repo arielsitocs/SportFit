@@ -3,8 +3,10 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Registro() {
+  const[rut, setRut] = useState('');
   const [correo, setCorreo] = useState('');
-  const [usuario, setUsuario] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellidos, setApellidos] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [confContrasena, setConfContrasena] = useState('');
 
@@ -24,7 +26,7 @@ export default function Registro() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ correo, usuario, contrasena }), 
+        body: JSON.stringify({ rut, correo, nombre, apellidos, contrasena }), 
       });
 
       if (response.ok) {
@@ -45,6 +47,17 @@ export default function Registro() {
       <div className="registro">
         <h1>Registro de Usuario</h1>
         <form className='formulario' onSubmit={manejarRegistro}>
+        <div className="correo">
+            <label htmlFor="correo">RUT</label>
+            <input
+              type="text"
+              id='rut'
+              required
+              value={rut}
+              onChange={(e) => setRut(e.target.value)}
+            />
+          </div>
+          
           <div className="correo">
             <label htmlFor="correo">Correo</label>
             <input
@@ -57,13 +70,24 @@ export default function Registro() {
           </div>
 
           <div className="usuario">
-            <label htmlFor="usuario">Nombre Completo</label>
+            <label htmlFor="usuario">Nombre</label>
             <input
               type="text"
-              id='usuario'
+              id='nombre'
               required
-              value={usuario}
-              onChange={(e) => setUsuario(e.target.value)}
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+            />
+          </div>
+
+          <div className="usuario">
+            <label htmlFor="usuario">Apellidos</label>
+            <input
+              type="text"
+              id='apellidos'
+              required
+              value={apellidos}
+              onChange={(e) => setApellidos(e.target.value)}
             />
           </div>
 

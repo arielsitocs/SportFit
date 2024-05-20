@@ -4,20 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../App';
 
 export default function Login() {
-  const [usuario, setUsuario] = useState('');
+  const [nom, setNom] = useState('');
   const [contrasena, setContrasena] = useState('');
 
   const navigate = useNavigate();
 
   const { login, setLogin } = useContext(AppContext);
-  const { usu, setUsu } = useContext(AppContext); 
+  const { nombre, setNombre } = useContext(AppContext); 
 
-  //Comprobación del cambio del estado de login
+  // Comprobación del cambio del estado de login
   useEffect(() => {
     if (login) {
       navigate('/');
       console.log(login);
-      console.log(usu);
+      console.log(nom);
     }
   }, [login, navigate]);
 
@@ -30,12 +30,17 @@ export default function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ usuario, contrasena }),
+        body: JSON.stringify({ nombre: nom, contrasena }),
       });
 
       if (response.ok) {
-        setLogin(true);
-        setUsu(usuario);
+        const data = await response.json();
+        if (data.success) {
+          setLogin(true);
+          setNombre(nom);
+        } else {
+          alert('Usuario no encontrado.');
+        }
       } else {
         alert('Usuario no encontrado.');
       }
@@ -61,8 +66,8 @@ export default function Login() {
                   name="usuario"
                   id="usu"
                   required
-                  value={usuario}
-                  onChange={(e) => setUsuario(e.target.value)}
+                  value={nom}
+                  onChange={(e) => setNom(e.target.value)}
                 />
               </div>
               <div className="contrasena">
