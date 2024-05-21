@@ -41,5 +41,5 @@ export default function Servicio({ imagen, nombre, descripcion, precio }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

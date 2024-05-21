@@ -1,31 +1,56 @@
-import '../styles/historial.css'
+import '../styles/historial.css';
+import { useContext, useState, useEffect } from 'react';
+import { AppContext } from '../App';
 
-export default function historial() {
-    /* CAMBIAR A CONEXION BASE DE DATOS */
-    const products = [
-        {name: 'Zapatillas de Ballet', imageUrl: 'https://saborlatinochile.cl/res/img/zapatos-ballet.jpg', precio: '35000', fechaCompra: '04/04/24'},
-        {name: 'Vestido de Baile Latino', imageUrl: 'https://saborlatinochile.cl/res/img/Vestido-Baile-Latino.jpg', precio: '60000', fechaCompra: '04/04/24'},
-        {name: 'Suela para Zapatos de Flamenco', imageUrl: 'https://saborlatinochile.cl/res/img/zapato-flamenco.jpg', precio: '15000', fechaCompra: '04/04/24'},
-        {name: 'Pantalón de Hip Hop', imageUrl: 'https://saborlatinochile.cl/res/img/Pantalon-Hip-Hop.jpg', precio: '23500', fechaCompra: '04/04/24'},
-        {name: 'Polera Mujer Sabor Latino Chile', imageUrl: 'https://saborlatinochile.cl/res/img/women1.jpg', precio: '15000', fechaCompra: '04/04/24'},
-        {name: 'Polera Hombre Sabor Latino Chile', imageUrl: 'https://saborlatinochile.cl/res/img/men1.jpg', precio: '15000', fechaCompra: '04/04/24'}        
-    ];
+export default function Historial() {
+    const { usuario } = useContext(AppContext);
+    const [ordenes, setOrdenes] = useState([]);
+
+    useEffect(() => {
+        obtenerHistorial(); 
+    }, []); 
+
+    const obtenerHistorial = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/historial', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ rut_cliente: usuario[0] }), 
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                    setOrdenes(data.orden);
+                } else {
+                    alert('Historial no obtenido.');
+                }
+            } else {
+                alert('Error al obtener la respuesta del servidor.');
+            }
+        } catch (error) {
+            console.error('Error al intentar obtener el historial:', error);
+            alert('Error al obtener historial.');
+        }
+    };
 
     return (
         <div className="historial-container">
             <h1 className='titulo'>Historial de Compras</h1>
             <div className="historial-list">
-                {products.map((product, index) => (
-                    <div className="historial-item" key={index}>
-                        <img className="item-img" src={product.imageUrl} alt={product.name} />
+                {ordenes.map((orden) => (
+                    <div className="historial-item" key={orden[0]}>
                         <div className="item-details">
-                            <h3>{product.name}</h3>
-                            <p><b>Precio: </b>${product.precio}</p>
-                            <p><b>Fecha de Compra: </b>{product.fechaCompra}</p>
+                            <h3>Codigo de orden: {orden[0]}</h3>
+                            <p><b>Monto: </b>${orden[1]}</p>
+                            <p><b>Fecha de entrega: </b>{orden[6]}</p>
+                            <p>Estado: entregada.</p>
                         </div>
                     </div>
                 ))}
             </div>
         </div>
-      );
-};
+    );
+}

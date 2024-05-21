@@ -1,27 +1,21 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
   background-color: #b62727;
   color: #ffffff;
   font-family: "Exo 2", sans-serif;
-  padding: 0.5rem;
-  z-index: 100; /* Ajusta el z-index si es necesario */
-
+  padding: 1rem 0;
+  margin-top: auto; /* Asegura que el footer se muestre al final */
 }
 
 .container {
   max-width: 100%;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-right: 6.5rem;
 }
 
 p {

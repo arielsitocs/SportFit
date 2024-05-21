@@ -4,6 +4,7 @@ import cors from 'cors';
 import { guardarUsuario } from './registrarUsu.js';
 import { ingresarUsuario } from './loginUsu.js';
 import { ingresarOrden } from './ingresarOrden.js'
+import { obtenerOrden } from './obtenerOrden.js';
 
 const app = express(); 
 const port = 3000;
@@ -46,9 +47,9 @@ app.post('/login', async (req, res) => {
 
 // Manejar el ingreso de una compra
 app.post('/carro', async (req, res) => {
-    const { total, direccion, fecha, rut_cliente, codigo_producto } = req.body;
+    const { total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada } = req.body;
     try {
-        await ingresarOrden(total, direccion, fecha, rut_cliente, codigo_producto);
+        await ingresarOrden(total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada);
         res.status(200).json({ success: true, message: 'Orden ingresada exitosamente.' });
     } catch (error) {
         console.error('Error al ingresar orden:', error);
@@ -56,6 +57,31 @@ app.post('/carro', async (req, res) => {
     }
 });
 
+//Obtención de ordenes para mostrar en el seguimiento
+app.post('/seguimiento', async (req, res) => {
+    const { rut_cliente } = req.body;
+    try {
+        const orden = await obtenerOrden(rut_cliente);
+        res.status(200).json({ success: true, message: 'Orden obtenida.', orden });
+        return orden;
+    } catch (error) {
+        console.error('Error al obtener la orden:', error);
+        res.status(500).json({ success: false, message: 'Ocurrió un error al ingresar la orden.' });
+    }
+});
+
+//Obtención de ordenes para mostrar en el historial
+app.post('/historial', async (req, res) => {
+    const { rut_cliente } = req.body;
+    try {
+        const orden = await obtenerOrden(rut_cliente);
+        res.status(200).json({ success: true, message: 'Orden obtenida.', orden });
+        return orden;
+    } catch (error) {
+        console.error('Error al obtener la orden:', error);
+        res.status(500).json({ success: false, message: 'Ocurrió un error al ingresar la orden.' });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);

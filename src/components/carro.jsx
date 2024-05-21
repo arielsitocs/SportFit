@@ -1,8 +1,11 @@
 import '../styles/carro.css'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useFetch } from '../useFetch.js'
+import { AppContext } from '../App.jsx';
 
 export default function Carro() {
+
+    const { usuario, setUsuario } = useContext(AppContext);
 
     const today = new Date();
     const { data, loading } = useFetch("https://www.saborlatinochile.cl/duoc/servicio_web_sportfit.php")
@@ -11,7 +14,8 @@ export default function Carro() {
     const [iva, setIva] = useState(0)
     const [direccion, setDireccion] = useState('');
     const [fecha, setFecha] = useState('');
-    const rut_cliente = '212937738';
+    const [fecha_estimada, setFecha_Estimada] = useState('');
+    const rut_cliente = usuario[0];
 
     var codigo_producto = 1;
 
@@ -21,6 +25,8 @@ export default function Carro() {
         setAllProducts([...allProducts, product])
 
         setFecha(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`)
+        today.setDate(today.getDate() + 10);
+        setFecha_Estimada(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`)
     }
 
     const eliminarProducto = (product) => {
@@ -40,15 +46,13 @@ export default function Carro() {
         event.preventDefault();
 
         if (allProducts.length !== 0) {
-            setFecha('11-11-2011');
-
             try {
                 const response = await fetch('http://localhost:3000/carro', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ total, direccion, fecha, rut_cliente, codigo_producto }),
+                    body: JSON.stringify({ total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada }),
                 });
 
                 if (response.ok) {
@@ -119,6 +123,7 @@ export default function Carro() {
                                         <p className='iva'>IVA: ${iva}</p>
                                         <p className='total'>TOTAL: ${total}</p>
                                         <p className='fecha'>FECHA: {fecha}</p>
+                                        <p className='fecha_entrega'>ENTREGA ESTIMADA: {fecha_estimada}</p>
                                         <input className='direccion' type="text" placeholder='Ingrese su dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)} />
                                         <div className="carro-resultado-pagar">
                                             <button onClick={manejarCompra}>PAGAR</button>
