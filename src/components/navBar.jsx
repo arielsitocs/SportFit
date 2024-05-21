@@ -10,7 +10,7 @@ export default function NavBar() {
     const [menuUserOpen, setUserOpen] = useState(false);
 
     const { login, setLogin } = useContext(AppContext);
-    const { nombre, setNombre } = useContext(AppContext);
+    const { usuario, setNombre } = useContext(AppContext);
 
     const toggleMainMenu = () => {
         setMenuOpen(!menuMainOpen);
@@ -43,7 +43,7 @@ export default function NavBar() {
                     <div className="buttons">
                         {
                             login ?
-                                <p>¡Bienvenido {nombre}!</p>
+                                <p>¡Bienvenido {usuario[2]}!</p>
                                 :
                                 <div>
                                     <a href="/login"><button>Entrar</button></a>

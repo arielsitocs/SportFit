@@ -33,10 +33,18 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem('nombre', JSON.stringify(nombre));
+    localStorage.setItem('nombre', JSON.stringify(nombre)); 
   }, [nombre]);
 
-  const[usuario, setUsuario] = useState('');
+  const[usuario, setUsuario] = useState(() => {
+    const storedUsu = localStorage.getItem('usuario');
+    return JSON.parse(storedUsu);
+  });
+
+  useEffect(() => {
+    localStorage.setItem('usuario', JSON.stringify(usuario))
+  }, [usuario])
+
 
   return (
     <AppContext.Provider value={{ login, setLogin, nombre, setNombre, usuario, setUsuario }}>

@@ -4,11 +4,13 @@ import { useFetch } from '../useFetch.js'
 
 export default function Carro() {
 
+    const today = new Date();
     const { data, loading } = useFetch("https://www.saborlatinochile.cl/duoc/servicio_web_sportfit.php")
     const [allProducts, setAllProducts] = useState([])
     const [total, setTotal] = useState(0)
     const [iva, setIva] = useState(0)
     const [direccion, setDireccion] = useState('');
+    const [fecha, setFecha] = useState('');
     const rut_cliente = '212937738';
 
     var codigo_producto = 1;
@@ -17,6 +19,8 @@ export default function Carro() {
         setTotal(Math.round((total + product.precio + iva)))
         setIva(Math.round(total * 0.19))
         setAllProducts([...allProducts, product])
+
+        setFecha(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`)
     }
 
     const eliminarProducto = (product) => {
@@ -36,7 +40,7 @@ export default function Carro() {
         event.preventDefault();
 
         if (allProducts.length !== 0) {
-            const productos = allProducts.map(producto => producto.nombre);
+            setFecha('11-11-2011');
 
             try {
                 const response = await fetch('http://localhost:3000/carro', {
@@ -44,7 +48,7 @@ export default function Carro() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ total, direccion, rut_cliente, codigo_producto }),
+                    body: JSON.stringify({ total, direccion, fecha, rut_cliente, codigo_producto }),
                 });
 
                 if (response.ok) {
@@ -114,6 +118,7 @@ export default function Carro() {
                                         }
                                         <p className='iva'>IVA: ${iva}</p>
                                         <p className='total'>TOTAL: ${total}</p>
+                                        <p className='fecha'>FECHA: {fecha}</p>
                                         <input className='direccion' type="text" placeholder='Ingrese su dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)} />
                                         <div className="carro-resultado-pagar">
                                             <button onClick={manejarCompra}>PAGAR</button>

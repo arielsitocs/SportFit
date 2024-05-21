@@ -1,11 +1,15 @@
 .footer {
-  position: relative;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   background-color: #b62727;
   color: #ffffff;
   font-family: "Exo 2", sans-serif;
   padding: 0.5rem;
+  z-index: 100; /* Ajusta el z-index si es necesario */
+
 }
 
 .container {

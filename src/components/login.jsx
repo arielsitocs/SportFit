@@ -10,7 +10,7 @@ export default function Login() {
   const navigate = useNavigate();
 
   const { login, setLogin } = useContext(AppContext);
-  const { nombre, setNombre } = useContext(AppContext); 
+  const { usuario, setUsuario } = useContext(AppContext);
 
   // Comprobación del cambio del estado de login
   useEffect(() => {
@@ -21,6 +21,10 @@ export default function Login() {
     }
   }, [login, navigate]);
 
+  useEffect(() => {
+    console.log('Usuario ingresao: ', usuario)
+  }, [usuario])
+  
   const manejarLogin = async (event) => {
     event.preventDefault();
 
@@ -37,7 +41,8 @@ export default function Login() {
         const data = await response.json();
         if (data.success) {
           setLogin(true);
-          setNombre(nom);
+          setUsuario(data.usuario);
+          console.log(data.usuario)
         } else {
           alert('Usuario no encontrado.');
         }

@@ -5,7 +5,7 @@ import { guardarUsuario } from './registrarUsu.js';
 import { ingresarUsuario } from './loginUsu.js';
 import { ingresarOrden } from './ingresarOrden.js'
 
-const app = express();
+const app = express(); 
 const port = 3000;
 
 // Middleware para permitir CORS
@@ -31,9 +31,10 @@ app.post('/registro', async (req, res) => {
 app.post('/login', async (req, res) => {
     const { nombre, contrasena } = req.body;
     try {
-        const usuarioValido = await ingresarUsuario(nombre, contrasena);
-        if (usuarioValido) {
-            res.status(200).json({ success: true, message: 'Usuario ingresado exitosamente.' });
+        const usuario = await ingresarUsuario(nombre, contrasena);
+        if (usuario) {
+            res.status(200).json({ success: true, message: 'Usuario ingresado exitosamente.', usuario });
+            return usuario;
         } else {
             res.status(401).json({ success: false, message: 'Usuario no encontrado.' });
         }
@@ -45,9 +46,9 @@ app.post('/login', async (req, res) => {
 
 // Manejar el ingreso de una compra
 app.post('/carro', async (req, res) => {
-    const { total, direccion, rut_cliente, codigo_producto } = req.body;
+    const { total, direccion, fecha, rut_cliente, codigo_producto } = req.body;
     try {
-        await ingresarOrden(total, direccion, rut_cliente, codigo_producto);
+        await ingresarOrden(total, direccion, fecha, rut_cliente, codigo_producto);
         res.status(200).json({ success: true, message: 'Orden ingresada exitosamente.' });
     } catch (error) {
         console.error('Error al ingresar orden:', error);

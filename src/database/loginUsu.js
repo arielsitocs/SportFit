@@ -14,7 +14,8 @@ async function ingresarUsuario(nombre, contrasena) {
         // Si se encuentra el usuario, devuelve el resultado
         if (result.rows.length > 0) {
             console.log("Usuario ingresado:", result.rows[0]);
-            return result.rows[0];
+            var usuario = result.rows[0];
+            return usuario;
         } else {
             console.log("Usuario no encontrado.");
             return null;
