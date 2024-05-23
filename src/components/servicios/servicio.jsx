@@ -1,23 +1,43 @@
 import '../../styles/servicios.css'
 import { AppContext } from '../../App';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Servicio({ imagen, nombre, descripcion, precio }) {
+export default function Servicio({ imagen, tipo_plan, descripcion, valor, fecha_inicio, fecha_exp }) {
     
-    const { login, setLogin } = useContext(AppContext);
+    const { login } = useContext(AppContext);
 
     const navigate = useNavigate();
 
-    const manejarCompra = () => {
+    const { usuario } = useContext(AppContext); 
+
+    const manejarSuscripcion = async (event) => {
+        event.preventDefault();
+
         if(login) 
-        {
-            navigate('/carro')
-        } 
-        else 
-        {
-            navigate('/login')
-        }
+            {
+                try {
+                    const response = await fetch('http://localhost:3000/servicios', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente: usuario[0] }), 
+                    });
+              
+                    if (response.ok) {
+                      alert("Suscripción exitosa.");
+                    } else {
+                      alert("Error al suscribirse.");
+                    }
+                  } catch (error) {
+                    console.error("Error al suscribirse: " + error);
+                    alert("Ocurrió un error al inscribirse.");
+                  }
+            } 
+            else {
+                navigate('/login')
+            }
     }
 
     return (
@@ -26,18 +46,19 @@ export default function Servicio({ imagen, nombre, descripcion, precio }) {
                 <img src={imagen} />
             </div>
 
-
-
             <div className="servicio-content">
                 <div className="servicio-title">
-                    <h3>{nombre}</h3>
+                    <h3>{tipo_plan}</h3>
                 </div>
                 
                 <p>{descripcion}</p>
-                <p>${precio}</p>
+                <p>${valor}/mes</p>
+
+                <p>Fecha inicio: {fecha_inicio}</p>
+                <p>Fecha termino: {fecha_exp}</p>
 
                 <div className="servicio-button">
-                    <button onClick={manejarCompra}>Contratar</button>
+                    <button onClick={manejarSuscripcion}>Contratar</button>
                 </div>
             </div>
         </div>

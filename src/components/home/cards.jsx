@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../../App';
 import '../../styles/cards.css';
+import { useContext } from 'react';
 
 export default function cards() {
   const products = [
@@ -15,6 +18,18 @@ export default function cards() {
     },
   ];
 
+  const { login } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const redireccion = () => {
+    if(login) {
+      navigate('/servicios')
+    } else {
+      navigate('/login')
+    }
+  }
+
   return (
     <div>
       <div className="product-title">
@@ -28,7 +43,7 @@ export default function cards() {
               <div className="card-body">
                 <h3 className="card-title">{product.name}</h3>
                 <p className="card-description">{product.description}</p>
-                <button className='btn-contratar'>Contratar</button>
+                <button className='btn-contratar' onClick={redireccion}>Contratar</button>
               </div>
             </div>
           ))}
@@ -40,7 +55,7 @@ export default function cards() {
               <div className="card-body">
                 <h3 className="card-title">{product.name}</h3>
                 <p className="card-description">{product.description}</p>
-                <button className='btn-contratar'>Contratar</button>
+                <button className='btn-contratar' onClick={redireccion}>Contratar</button>
               </div>
             </div>
           ))}

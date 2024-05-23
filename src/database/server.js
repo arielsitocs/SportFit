@@ -4,6 +4,7 @@ import cors from 'cors';
 import { guardarUsuario } from './registrarUsu.js';
 import { ingresarUsuario } from './loginUsu.js';
 import { ingresarOrden } from './ingresarOrden.js'
+import { ingresarSuscripcion } from './ingresarSuscripcion.js';
 import { obtenerOrden } from './obtenerOrden.js';
 
 const app = express(); 
@@ -80,6 +81,19 @@ app.post('/historial', async (req, res) => {
     } catch (error) {
         console.error('Error al obtener la orden:', error);
         res.status(500).json({ success: false, message: 'Ocurrió un error al ingresar la orden.' });
+    }
+});
+
+//Manejar la suscripción de un servicio
+app.post('/servicios', async (req, res) => {
+    const { fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente } = req.body;
+    try {
+        const suscripcion = await ingresarSuscripcion( fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente);
+        res.status(200).json({ success: true, message: 'Suscripción exitosa.' });
+        return suscripcion;
+    } catch (error) {
+        console.error('Error al suscribirse:', error);
+        res.status(500).json({ success: false, message: 'Ocurrió un error al suscribirse.' });
     }
 });
 

@@ -2,10 +2,36 @@ import '../../styles/perfil.css'
 import hombre from '../../assets/img/hombre.webp'
 import Suscripcion from '../perfil/suscripcion'
 import { AppContext } from '../../App'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 export default function Perfil() {
-    const { usuario, setUsuario } = useContext(AppContext);
+    const { usuario } = useContext(AppContext); 
+
+    const [rut_cliente, setRut_Cliente] = useState('');
+
+    const manejarSuscripcion = async (event) => {
+        event.preventDefault();
+        
+        try {
+            const response = await fetch('http://localhost:3000/perfil', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ rut_cliente: usuario[0] }), 
+            });
+      
+            if (response.ok) {
+              alert("Suscripción exitosa.");
+              navigate('/login');
+            } else {
+              alert("Error al suscribirse.");
+            }
+          } catch (error) {
+            console.error("Error al guardar el usuario: " + error);
+            alert("Ocurrió un error al registrar el usuario.");
+          }
+    }
 
     return (
         <div className='main'>
