@@ -6,15 +6,15 @@ export default function testApi() {
     return (
         <div>
             <div className="api-titulo">
-                <h1>Test Api de pana</h1>
+                {/* <h1>Test Api de pana</h1> */}
             </div>
 
             <div className="api-test">
                 <ul>
-                    {loading && <li>cargando... y wea</li>}
+                    {/* {loading && <li>cargando... y wea</li>}
                     {data?.map((producto) => (
                         <li key={producto.codigo}>{producto.codigo} {producto.nombre}</li>
-                    ))}
+                    ))} */}
                 </ul>
             </div>
         </div>

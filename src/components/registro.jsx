@@ -3,12 +3,13 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Registro() {
-  const[rut, setRut] = useState('');
+  const [rut, setRut] = useState('');
   const [correo, setCorreo] = useState('');
   const [nombre, setNombre] = useState('');
   const [apellidos, setApellidos] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [confContrasena, setConfContrasena] = useState('');
+  const [perfil, setPerfil] = useState('Cliente');
 
   const navigate = useNavigate();
 
@@ -26,7 +27,7 @@ export default function Registro() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ rut, correo, nombre, apellidos, contrasena }), 
+        body: JSON.stringify({ rut, correo, nombre, apellidos, contrasena, perfil }),
       });
 
       if (response.ok) {
@@ -47,7 +48,7 @@ export default function Registro() {
       <div className="registro">
         <h1>Registro de Usuario</h1>
         <form className='formulario' onSubmit={manejarRegistro}>
-        <div className="correo">
+          <div className="correo">
             <label htmlFor="correo">RUT</label>
             <input
               type="text"
@@ -57,7 +58,7 @@ export default function Registro() {
               onChange={(e) => setRut(e.target.value)}
             />
           </div>
-          
+
           <div className="correo">
             <label htmlFor="correo">Correo</label>
             <input
@@ -112,6 +113,16 @@ export default function Registro() {
               onChange={(e) => setConfContrasena(e.target.value)}
             />
           </div>
+
+          <div className="perfil" id="perfil">
+            <label htmlFor="tipoPerfil">Tipo de perfil</label>
+            <select className="opciones" value={perfil} onChange={(e) => setPerfil(e.target.value)}>
+              <option value="Cliente">Cliente</option>
+              <option value="Nutricionista">Nutricionista</option>
+              <option value="Preparador Físico">Preparador Físico</option>
+            </select>
+          </div>
+
 
           <div className="registrarse">
             <button type='submit'>Registrarse</button>

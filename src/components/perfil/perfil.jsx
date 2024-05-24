@@ -3,15 +3,19 @@ import hombre from '../../assets/img/hombre.webp'
 import Suscripcion from '../perfil/suscripcion'
 import { AppContext } from '../../App'
 import { useContext, useEffect, useState } from 'react'
+import suscripcion from '../perfil/suscripcion'
 
 export default function Perfil() {
     const { usuario } = useContext(AppContext); 
 
-    const [rut_cliente, setRut_Cliente] = useState('');
+    const [suscripciones, setSuscripciones] = useState([]);
 
-    const manejarSuscripcion = async (event) => {
-        event.preventDefault();
-        
+    useEffect(() => {
+        obtenerSuscripciones();
+    }, [])
+
+    const obtenerSuscripciones = async () => {
+
         try {
             const response = await fetch('http://localhost:3000/perfil', {
               method: 'POST',
@@ -22,13 +26,17 @@ export default function Perfil() {
             });
       
             if (response.ok) {
-              alert("Suscripción exitosa.");
-              navigate('/login');
+                const data = await response.json();
+                if (data.success) {
+                    setSuscripciones(data.suscripcion);
+                } else {
+                    alert('Suscripciones no obtenidas.');
+                }
             } else {
-              alert("Error al suscribirse.");
+              alert("Error al obtener suscripcion.");
             }
           } catch (error) {
-            console.error("Error al guardar el usuario: " + error);
+            console.error("Error al obtener suscripciones: " + error);
             alert("Ocurrió un error al registrar el usuario.");
           }
     }
@@ -42,7 +50,7 @@ export default function Perfil() {
 
                 <div className="perfil-info">
                     <h2>{usuario[2] + " " + usuario[3]}</h2>
-                    <h3>Cliente SportFit</h3>
+                    <h3>{usuario[5]}</h3>
                 </div>
             </div>
 
@@ -62,12 +70,12 @@ export default function Perfil() {
                     </div>
 
                     <div className="perfil-suscripciones-contenido">
-                        <Suscripcion nombre='Nutricionista'
-                            descripcion='Asegura una dieta balanceada dependiendo del objetivo que quieras lograr. Contratar' />
-                        <Suscripcion nombre='Preparador Físico'
-                            descripcion='Entrenamientos personalizados de acuerdo a tus metas e intereses. No importa si eres nuevo o experimentado.' />
-                        <Suscripcion nombre='Servicio Random'
-                            descripcion='When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object “props”.' />
+                        {
+                            suscripciones.map((suscripcion) => (
+                                <Suscripcion codigo_suscripcion={suscripcion[0]} tipo_plan={suscripcion[4]} descripcion={suscripcion[1]} fecha_inicio={suscripcion[2]}
+                                fecha_exp={suscripcion[3]} valor={suscripcion[5]}/>
+                            ))
+                        }
                     </div>
                 </div>
             </div>

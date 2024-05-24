@@ -22,7 +22,7 @@ export default function Servicio({ imagen, tipo_plan, descripcion, valor, fecha_
                       headers: {
                         'Content-Type': 'application/json',
                       },
-                      body: JSON.stringify({ fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente: usuario[0] }), 
+                      body: JSON.stringify({ descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente: usuario[0] }), 
                     });
               
                     if (response.ok) {

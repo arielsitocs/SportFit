@@ -1,12 +1,12 @@
 import { conectarBaseDatos, mostrarDatos } from './conexion.js'
 
-async function guardarUsuario(rut, correo, nombre, apellidos, contrasena) {
+async function guardarUsuario(rut, correo, nombre, apellidos, contrasena, perfil) {
     const connection = await conectarBaseDatos();
 
     try {
         await connection.execute(
-            'INSERT INTO cliente (rut_cli, correo, nombre, apellidos, contrasena) VALUES (:rut, :correo, :nombre, :apellidos, :contrasena)', 
-            { rut, correo, nombre, apellidos, contrasena },
+            'INSERT INTO cliente (rut_cli, correo, nombre, apellidos, contrasena, perfil) VALUES (:rut, :correo, :nombre, :apellidos, :contrasena, :perfil)', 
+            { rut, correo, nombre, apellidos, contrasena, perfil },
             { autoCommit: true }
         );
         console.log("Usuario registrado.");
@@ -20,7 +20,7 @@ async function guardarUsuario(rut, correo, nombre, apellidos, contrasena) {
             } catch (err) {
                 console.error('Error al cerrar la conexión :', err);
             }
-        }
+        } 
     }
 }
 
