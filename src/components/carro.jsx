@@ -15,6 +15,7 @@ export default function Carro() {
     const [direccion, setDireccion] = useState('');
     const [fecha, setFecha] = useState('');
     const [fecha_estimada, setFecha_Estimada] = useState('');
+    const [estado, setEstado] = useState('En preparación')
     const rut_cliente = usuario[0];
 
     var codigo_producto = 1;
@@ -52,7 +53,7 @@ export default function Carro() {
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada }),
+                    body: JSON.stringify({ total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado }),
                 });
 
                 if (response.ok) {

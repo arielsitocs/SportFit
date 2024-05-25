@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom'
 import { useState, createContext, useEffect } from 'react'
 import Home from './components/home/home'
 import Login from './components/login'
@@ -20,7 +20,7 @@ function App() {
     const storedLogin = localStorage.getItem('login');
     return storedLogin ? JSON.parse(storedLogin) : false;
   });
-
+  
   // Almacenar el estado de login en el localStorage cada vez que cambie
   useEffect(() => {
     localStorage.setItem('login', JSON.stringify(login));
@@ -45,6 +45,11 @@ function App() {
     localStorage.setItem('usuario', JSON.stringify(usuario))
   }, [usuario])
 
+  // useEffect(() => {
+  //   if(login !== true) {
+        
+  //   }
+  // }, [login])
 
   return (
     <AppContext.Provider value={{ login, setLogin, nombre, setNombre, usuario, setUsuario }}>

@@ -63,7 +63,7 @@ export default function GenerarGrid() {
                                         <td></td>
                                         <td>{orden[2]}</td>
                                         <td>{orden[5]}</td> 
-                                        <td>En preparación</td>
+                                        <td>{orden[7]}</td>
                                         <td>${orden[1]}</td>
                                     </tr>
                                 ))

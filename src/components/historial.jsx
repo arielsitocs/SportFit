@@ -7,8 +7,8 @@ export default function Historial() {
     const [ordenes, setOrdenes] = useState([]);
 
     useEffect(() => {
-        obtenerHistorial(); 
-    }, []); 
+        obtenerHistorial();
+    }, []);
 
     const obtenerHistorial = async () => {
         try {
@@ -17,7 +17,7 @@ export default function Historial() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ rut_cliente: usuario[0] }), 
+                body: JSON.stringify({ rut_cliente: usuario[0] }),
             });
 
             if (response.ok) {
@@ -39,18 +39,24 @@ export default function Historial() {
     return (
         <div className="historial-container">
             <h1 className='titulo'>Historial de Compras</h1>
-            <div className="historial-list">
-                {ordenes.map((orden) => (
-                    <div className="historial-item" key={orden[0]}>
-                        <div className="item-details">
-                            <h3>Codigo de orden: {orden[0]}</h3>
-                            <p><b>Monto: </b>${orden[1]}</p>
-                            <p><b>Fecha de entrega: </b>{orden[6]}</p>
-                            <p>Estado: entregada.</p>
+            {
+                ordenes.length ?
+                        <div className="historial-list">
+                            {ordenes.map((orden) => (
+                                <div className="historial-item" key={orden[0]}>
+                                    <div className="item-details">
+                                        <h3>Codigo de orden: {orden[0]}</h3>
+                                        <p><b>Monto: </b>${orden[1]}</p>
+                                        <p><b>Fecha de entrega: </b>{orden[6]}</p>
+                                        <p>Estado: entregada.</p>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    </div>
-                ))}
-            </div>
+                    :
+                    <p>No tienes compras anteriores.</p>
+            }
+
         </div>
     );
 }

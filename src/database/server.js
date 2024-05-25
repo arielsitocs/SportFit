@@ -50,9 +50,9 @@ app.post('/login', async (req, res) => {
 
 // Manejar el ingreso de una compra
 app.post('/carro', async (req, res) => {
-    const { total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada } = req.body;
+    const { total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado } = req.body;
     try {
-        await ingresarOrden(total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada);
+        await ingresarOrden(total, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado);
         res.status(200).json({ success: true, message: 'Orden ingresada exitosamente.' });
     } catch (error) {
         console.error('Error al ingresar orden:', error);
