@@ -1,0 +1,48 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+    form {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: gray;
+        padding: 20px;
+        border-radius: 10px;
+        width: 30%;
+    
+        h1 {
+            margin-bottom: 20px;
+        }
+    
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: 10px;
+    
+            label {
+                margin-bottom: 3px;
+            }
+            
+            input {
+                padding: 4px;
+            }
+    
+            select {
+                width: 169px;
+                height: 27px;
+            }
+        }
+    
+        button {
+            margin-top: 20px;
+            padding: 5px;
+        }
+    }
+}
+

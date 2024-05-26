@@ -107,7 +107,7 @@ export default function Carro() {
                 </div>
 
                 <div className="carro-resultado">
-                    <form method='POST'>
+                    <form method='POST' onSubmit={manejarCompra}>
                         <div className="carro-resultado-title">
                             <h2>Resultado de Compra</h2>
                         </div>
@@ -125,9 +125,9 @@ export default function Carro() {
                                         <p className='total'>TOTAL: ${total}</p>
                                         <p className='fecha'>FECHA: {fecha}</p>
                                         <p className='fecha_entrega'>ENTREGA ESTIMADA: {fecha_estimada}</p>
-                                        <input className='direccion' type="text" placeholder='Ingrese su dirección' value={direccion} onChange={(e) => setDireccion(e.target.value)} />
+                                        <input className='direccion' type="text" placeholder='Ingrese su dirección' required value={direccion} onChange={(e) => setDireccion(e.target.value)} />
                                         <div className="carro-resultado-pagar">
-                                            <button onClick={manejarCompra}>PAGAR</button>
+                                            <button type='submit'>PAGAR</button>
                                         </div>
                                     </div>
                                 ) : <p>Carro vacio.</p>

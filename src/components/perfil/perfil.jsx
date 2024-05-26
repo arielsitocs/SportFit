@@ -12,7 +12,7 @@ export default function Perfil() {
 
     useEffect(() => {
         obtenerSuscripciones();
-    }, [])
+    }, [suscripciones, usuario])
 
     const obtenerSuscripciones = async () => {
 
@@ -71,10 +71,13 @@ export default function Perfil() {
 
                     <div className="perfil-suscripciones-contenido">
                         {
+                            suscripciones.length ?
                             suscripciones.map((suscripcion) => (
                                 <Suscripcion codigo_suscripcion={suscripcion[0]} tipo_plan={suscripcion[4]} descripcion={suscripcion[1]} fecha_inicio={suscripcion[2]}
                                 fecha_exp={suscripcion[3]} valor={suscripcion[5]}/>
                             ))
+                            :
+                            <p>No tienes suscripciones activas.</p>
                         }
                     </div>
                 </div>

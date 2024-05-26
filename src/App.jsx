@@ -12,6 +12,7 @@ import Footer from './components/Footer'
 import Historial from './components/historial'
 import Seguimiento from './components/seguimiento'
 import Servicios from './components/servicios/servicios'
+import Api from './components/api'
 
 export const AppContext = createContext();
 
@@ -67,6 +68,7 @@ function App() {
             <Route path="/historial" element={<Historial />} />
             <Route path="/seguimiento" element={<Seguimiento />} />
             <Route path='/servicios' element={<Servicios />}></Route>
+            <Route path='/api' element={<Api />}></Route>
           </Routes>
 
           <Footer />

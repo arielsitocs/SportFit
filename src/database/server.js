@@ -101,9 +101,10 @@ app.post('/servicios', async (req, res) => {
 
 //Obtención de suscripciones para mostrar en el perfil
 app.post('/perfil', async (req, res) => {
-    const { rut_cliente } = req.body;
+    const { rut_cliente, codigo_suscripcion } = req.body;
     try {
         const suscripcion = await obtenerSuscripcion(rut_cliente);
+        await eliminarSuscripcion(codigo_suscripcion);
         res.status(200).json({ success: true, message: 'Suscripciones obtenidas.', suscripcion });
         return suscripcion;
     } catch (error) {
@@ -113,16 +114,16 @@ app.post('/perfil', async (req, res) => {
 });
 
 //Eliminación de una suscripción del perfil de un usuario
-app.post('/perfil', async (req, res) => {
-    const { codigo_suscripcion } = req.body;
-    try {
-        await eliminarSuscripcion(codigo_suscripcion);
-        res.status(200).json({ success: true, message: 'Suscripcion eliminada.' });
-    } catch (error) {
-        console.error('Error al eliminar la suscripción:', error);
-        res.status(500).json({ success: false, message: 'Ocurrió un error al eliminar la suscripción.' });
-    }
-});
+// app.post('/perfil/eliminar', async (req, res) => {
+//     const { codigo_suscripcion } = req.body;
+//     try {
+//         await eliminarSuscripcion(codigo_suscripcion);
+//         res.status(200).json({ success: true, message: 'Suscripcion eliminada.' });
+//     } catch (error) {
+//         console.error('Error al eliminar la suscripción:', error);
+//         res.status(500).json({ success: false, message: 'Ocurrió un error al eliminar la suscripción.' });
+//     }
+// });
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);
