@@ -3,16 +3,24 @@ import hombre from '../../assets/img/hombre.webp'
 import Suscripcion from '../perfil/suscripcion'
 import { AppContext } from '../../App'
 import { useContext, useEffect, useState } from 'react'
-import suscripcion from '../perfil/suscripcion'
 
 export default function Perfil() {
     const { usuario } = useContext(AppContext); 
 
     const [suscripciones, setSuscripciones] = useState([]);
+    const [funcionario, setFuncionario] = useState(false);
 
     useEffect(() => {
         obtenerSuscripciones();
-    }, [suscripciones, usuario])
+        validarUsuario();
+    }, [usuario])
+
+    const validarUsuario = () => {
+        if(usuario[5] == 'Nutricionista' || usuario[5] == 'Preparador Físisco') {
+            setFuncionario(true);
+        }
+    }
+  
 
     const obtenerSuscripciones = async () => {
 
@@ -82,6 +90,14 @@ export default function Perfil() {
                     </div>
                 </div>
             </div>
+
+            { 
+                funcionario ?
+                <div>ERES FUNCIONARIO, ALGO PASARÁ AQUI CUANDO ENTIENDA QUE QUIERE EL PROFE</div>
+                :
+                <div></div>
+            }
+
         </div>
     )
 }

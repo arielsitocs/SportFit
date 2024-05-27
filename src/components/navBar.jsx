@@ -4,13 +4,16 @@ import gymlogo from '../assets/img/logo.png';
 import menuicon from '../assets/img/menu-icon.png';
 import user from '../assets/img/user.png';
 import { AppContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
+    const navigate = useNavigate();
+
     const [menuMainOpen, setMenuOpen] = useState(false);
     const [menuUserOpen, setUserOpen] = useState(false);
 
     const { login, setLogin } = useContext(AppContext);
-    const { usuario, setNombre } = useContext(AppContext);
+    const { usuario } = useContext(AppContext);
 
     const toggleMainMenu = () => {
         setMenuOpen(!menuMainOpen);
@@ -19,6 +22,11 @@ export default function NavBar() {
     const toggleUserMenu = () => {
         setUserOpen(!menuUserOpen);
     };
+
+    const cerrarSesion = () => {
+        setLogin(false);
+        navigate('/')
+    }
 
     return (
         <main>
@@ -90,7 +98,7 @@ export default function NavBar() {
                     <a href="/perfil">Mi Perfil</a>
                     <a href="/historial">Historial de Compras</a>
                     <a href="/seguimiento">Seguimiento</a>
-                    <a href="" onClick={() => setLogin(false)}>Cerrar Sesión</a>
+                    <a href="" onClick={() => cerrarSesion()}>Cerrar Sesión</a>
                 </ul>
             </div>
         </main>

@@ -13,6 +13,7 @@ import Historial from './components/historial'
 import Seguimiento from './components/seguimiento'
 import Servicios from './components/servicios/servicios'
 import Api from './components/api'
+import Error from './components/error'
 
 export const AppContext = createContext();
 
@@ -54,11 +55,12 @@ function App() {
 
   return (
     <AppContext.Provider value={{ login, setLogin, nombre, setNombre, usuario, setUsuario }}>
-      <div>
+      <div className='main-conten'>
         <BrowserRouter>
           <NavBar />
 
           <Routes>
+            <Route path='*' element={<Error />} />
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />

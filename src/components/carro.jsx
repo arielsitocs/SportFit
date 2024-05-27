@@ -5,7 +5,7 @@ import { AppContext } from '../App.jsx';
 
 export default function Carro() {
 
-    const { usuario, setUsuario } = useContext(AppContext);
+    const { usuario } = useContext(AppContext);
 
     const today = new Date();
     const { data, loading } = useFetch("https://www.saborlatinochile.cl/duoc/servicio_web_sportfit.php")
@@ -16,15 +16,14 @@ export default function Carro() {
     const [fecha, setFecha] = useState('');
     const [fecha_estimada, setFecha_Estimada] = useState('');
     const [estado, setEstado] = useState('En preparación')
+    const [codigo_producto, setCodigo_producto] = useState(1)
     const rut_cliente = usuario[0];
 
-    var codigo_producto = 1;
 
     const añadirProducto = (product) => {
         setTotal(Math.round((total + product.precio + iva)))
         setIva(Math.round(total * 0.19))
         setAllProducts([...allProducts, product])
-
         setFecha(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`)
         today.setDate(today.getDate() + 10);
         setFecha_Estimada(`${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`)

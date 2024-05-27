@@ -4,6 +4,7 @@
     align-items: center;
     flex-direction: column;
     margin-top: 50px;
+    margin-bottom: 50px;
 
     .productos-title {
         margin-bottom: 30px;
