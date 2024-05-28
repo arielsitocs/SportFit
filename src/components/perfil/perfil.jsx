@@ -5,7 +5,7 @@ import { AppContext } from '../../App'
 import { useContext, useEffect, useState } from 'react'
 
 export default function Perfil() {
-    const { usuario } = useContext(AppContext); 
+    const { usuario } = useContext(AppContext);
 
     const [suscripciones, setSuscripciones] = useState([]);
     const [funcionario, setFuncionario] = useState(false);
@@ -16,23 +16,23 @@ export default function Perfil() {
     }, [usuario])
 
     const validarUsuario = () => {
-        if(usuario[5] == 'Nutricionista' || usuario[5] == 'Preparador Físisco') {
+        if (usuario[5] == 'Nutricionista' || usuario[5] == 'Preparador Físisco') {
             setFuncionario(true);
         }
     }
-  
+
 
     const obtenerSuscripciones = async () => {
 
         try {
             const response = await fetch('http://localhost:3000/perfil', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ rut_cliente: usuario[0] }), 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ rut_cliente: usuario[0] }),
             });
-      
+
             if (response.ok) {
                 const data = await response.json();
                 if (data.success) {
@@ -41,12 +41,12 @@ export default function Perfil() {
                     alert('Suscripciones no obtenidas.');
                 }
             } else {
-              alert("Error al obtener suscripcion.");
+                alert("Error al obtener suscripcion.");
             }
-          } catch (error) {
+        } catch (error) {
             console.error("Error al obtener suscripciones: " + error);
             alert("Ocurrió un error al registrar el usuario.");
-          }
+        }
     }
 
     return (
@@ -80,22 +80,33 @@ export default function Perfil() {
                     <div className="perfil-suscripciones-contenido">
                         {
                             suscripciones.length ?
-                            suscripciones.map((suscripcion) => (
-                                <Suscripcion codigo_suscripcion={suscripcion[0]} tipo_plan={suscripcion[4]} descripcion={suscripcion[1]} fecha_inicio={suscripcion[2]}
-                                fecha_exp={suscripcion[3]} valor={suscripcion[5]}/>
-                            ))
-                            :
-                            <p>No tienes suscripciones activas.</p>
+                                suscripciones.map((suscripcion) => (
+                                    <Suscripcion codigo_suscripcion={suscripcion[0]} tipo_plan={suscripcion[4]} descripcion={suscripcion[1]} fecha_inicio={suscripcion[2]}
+                                        fecha_exp={suscripcion[3]} valor={suscripcion[5]} />
+                                ))
+                                :
+                                <p>No tienes suscripciones activas.</p>
                         }
                     </div>
                 </div>
             </div>
 
-            { 
+            {
                 funcionario ?
-                <div>ERES FUNCIONARIO, ALGO PASARÁ AQUI CUANDO ENTIENDA QUE QUIERE EL PROFE</div>
-                :
-                <div></div>
+                    <div className='comentarios'>
+                        <form method='POST'>
+                            <h3>Comentarios</h3>
+                            <select name="" id="">
+                                /* MOSTRAR TODOS LOS SERVICIOS REGISTRADOS PARA PODER COMENTARLOS */
+                            </select>
+
+                            <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
+
+                            <button>Enviar</button>
+                        </form>
+                    </div>
+                    :
+                    <div></div>
             }
 
         </div>
