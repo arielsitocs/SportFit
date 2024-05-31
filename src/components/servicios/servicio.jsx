@@ -10,6 +10,8 @@ export default function Servicio({ imagen, tipo_plan, descripcion, valor, fecha_
     const navigate = useNavigate();
 
     const { usuario } = useContext(AppContext); 
+    
+    const comentario = '';
 
     const manejarSuscripcion = async (event) => {
         event.preventDefault();
@@ -22,7 +24,7 @@ export default function Servicio({ imagen, tipo_plan, descripcion, valor, fecha_
                       headers: {
                         'Content-Type': 'application/json',
                       },
-                      body: JSON.stringify({ descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente: usuario[0] }), 
+                      body: JSON.stringify({ descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente: usuario[0], comentario }), 
                     });
               
                     if (response.ok) {

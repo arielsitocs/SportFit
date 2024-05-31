@@ -5,7 +5,9 @@ import { guardarUsuario } from './registrarUsu.js';
 import { ingresarUsuario } from './loginUsu.js';
 import { ingresarOrden } from './ingresarOrden.js'
 import { ingresarSuscripcion } from './ingresarSuscripcion.js';
+import { ingresarComentario } from './ingresarComentario.js';
 import { obtenerSuscripcion } from './obtenerSuscripcion.js';
+import { obtenerSuscripcionesFunc } from './obtenerSuscripciones.js';
 import { eliminarSuscripcion } from './eliminarSuscripcion.js'; 
 import { obtenerOrden } from './obtenerOrden.js';
 
@@ -88,9 +90,9 @@ app.post('/historial', async (req, res) => {
 
 //Manejar la suscripción de un servicio
 app.post('/servicios', async (req, res) => {
-    const { descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente } = req.body;
+    const { descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente, comentario } = req.body;
     try {
-        const suscripcion = await ingresarSuscripcion(descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente);
+        const suscripcion = await ingresarSuscripcion(descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente, comentario);
         res.status(200).json({ success: true, message: 'Suscripción exitosa.' });
         return suscripcion;
     } catch (error) {
@@ -101,24 +103,27 @@ app.post('/servicios', async (req, res) => {
 
 //Obtención de suscripciones para mostrar en el perfil
 app.post('/perfil', async (req, res) => {
-    const { rut_cliente, codigo_suscripcion } = req.body;
+    const { rut_cliente, codigo_suscripcion, codigo_comentario, comentario } = req.body;
     try {
         const suscripcion = await obtenerSuscripcion(rut_cliente);
+        const suscripciones = await obtenerSuscripcionesFunc();
         await eliminarSuscripcion(codigo_suscripcion);
-        res.status(200).json({ success: true, message: 'Suscripciones obtenidas.', suscripcion });
-        return suscripcion;
+        await ingresarComentario(codigo_comentario, comentario);
+        res.status(200).json({ success: true, message: 'Suscripciones obtenidas.', suscripcion, suscripciones });
     } catch (error) {
         console.error('Error al obtener las suscripciones:', error);
         res.status(500).json({ success: false, message: 'Ocurrió un error al obtener las suscripciones.' });
     }
 });
 
-//Eliminación de una suscripción del perfil de un usuario
-// app.post('/perfil/eliminar', async (req, res) => {
+
+
+
+// app.delete('/perfil', async (req, res) => {
 //     const { codigo_suscripcion } = req.body;
 //     try {
 //         await eliminarSuscripcion(codigo_suscripcion);
-//         res.status(200).json({ success: true, message: 'Suscripcion eliminada.' });
+//         res.status(200).json({ success: true, message: 'Suscripción eliminada.' });
 //     } catch (error) {
 //         console.error('Error al eliminar la suscripción:', error);
 //         res.status(500).json({ success: false, message: 'Ocurrió un error al eliminar la suscripción.' });

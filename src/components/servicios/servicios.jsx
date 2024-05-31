@@ -1,5 +1,7 @@
 import '../../styles/servicios.css'
 import Servicio from './servicio'
+import nutricionista from '../../assets/img/nutricionista.jpg'
+import preparador from '../../assets/img/preparador.jpg'
 
 export default function Servicios() {
 
@@ -13,7 +15,7 @@ export default function Servicios() {
             {
                 tipo_plan: 'Nutricionista',
                 descripcion: 'Asegura una dieta balanceada dependiendo del objetivo que quieras lograr.',
-                imageUrl: 'https://nationalpti.org/wp-content/uploads/2014/02/Personal-Trainer.jpg',
+                imageUrl: nutricionista,
                 valor: 20000,
                 fecha_inicio: `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`,
                 fecha_exp: `${fechaTermino.getFullYear()}-${(fechaTermino.getMonth() + 1).toString().padStart(2, '0')}-${fechaTermino.getDate().toString().padStart(2, '0')}`
@@ -22,7 +24,7 @@ export default function Servicios() {
             {
                 tipo_plan: 'Preparador Físico',
                 descripcion: 'Entrenamientos personalizados de acuerdo a tus metas e intereses. No importa si eres nuevo o experimentado.',
-                imageUrl: 'https://nationalpti.org/wp-content/uploads/2014/02/Personal-Trainer.jpg',
+                imageUrl: preparador,
                 valor: 30000,
                 fecha_inicio: `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`,
                 fecha_exp: `${fechaTermino.getFullYear()}-${(fechaTermino.getMonth() + 1).toString().padStart(2, '0')}-${fechaTermino.getDate().toString().padStart(2, '0')}`

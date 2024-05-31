@@ -48,7 +48,7 @@ export default function Historial() {
                                         <h3>Codigo de orden: {orden[0]}</h3>
                                         <p><b>Monto: </b>${orden[1]}</p>
                                         <p><b>Fecha de entrega: </b>{orden[6]}</p>
-                                        <p>Estado: entregada.</p>
+                                        <p>Estado: {orden[7]}</p>
                                     </div>
                                 </div>
                             ))}

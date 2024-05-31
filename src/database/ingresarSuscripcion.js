@@ -1,12 +1,12 @@
 import { conectarBaseDatos } from './conexion.js';
 
-async function ingresarSuscripcion(descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente) {
+async function ingresarSuscripcion(descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente, comentario) {
     const connection = await conectarBaseDatos();
 
     try {
         await connection.execute(
-            'INSERT INTO suscripcion (descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cli) VALUES (:descripcion, :fecha_inicio, :fecha_exp, :tipo_plan, :valor, :rut_cliente)', 
-            { descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente },
+            'INSERT INTO suscripcion (descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cli, comentario) VALUES (:descripcion, :fecha_inicio, :fecha_exp, :tipo_plan, :valor, :rut_cliente, :comentario)', 
+            { descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente, comentario },
             { autoCommit: true }
         );
         console.log("Suscripción ingresada.");

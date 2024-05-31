@@ -8,11 +8,16 @@ export default function Perfil() {
     const { usuario } = useContext(AppContext);
 
     const [suscripciones, setSuscripciones] = useState([]);
+    const [suscripcionesFunc, setSuscripcionesFunc] = useState([]);
+    const [codigo_comentario, setCodigoComentario] = useState('');
+    const [comentario, setComentario] = useState('');
     const [funcionario, setFuncionario] = useState(false);
 
     useEffect(() => {
         obtenerSuscripciones();
+        obtenerSuscripcionesFunc();
         validarUsuario();
+        console.log(suscripcionesFunc)
     }, [usuario])
 
     const validarUsuario = () => {
@@ -20,7 +25,6 @@ export default function Perfil() {
             setFuncionario(true);
         }
     }
-
 
     const obtenerSuscripciones = async () => {
 
@@ -48,6 +52,60 @@ export default function Perfil() {
             alert("Ocurrió un error al registrar el usuario.");
         }
     }
+
+    const obtenerSuscripcionesFunc = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/perfil', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                if (data.success) {
+                    setSuscripcionesFunc(data.suscripciones);
+                } else {
+                    alert('Suscripciones no obtenidas.');
+                }
+            } else {
+                alert("Error al obtener suscripcion.");
+            }
+        } catch (error) {
+            console.error("Error al obtener suscripciones: " + error);
+            alert("Ocurrió un error al registrar el usuario.");
+        }
+    }
+
+    const ingresarComentario = async (event) => {
+        event.preventDefault();
+    
+        try {
+          const response = await fetch('http://localhost:3000/perfil', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ codigo_comentario, comentario }),
+          });
+    
+          if (response.ok) {
+            const data = await response.json();
+            if (data.success) {
+                alert('Comentario enviado.')
+            } else {
+                alert('Comentario no enviado.');
+            }
+          } else {
+            alert('Error en servidor al enviar comentario.');
+          }
+        } catch (error) {
+          console.error('Error al intentar enviar comentario:', error);
+          alert('Error al enviar.');
+        }
+      };
+
 
     return (
         <div className='main'>
@@ -94,15 +152,19 @@ export default function Perfil() {
             {
                 funcionario ?
                     <div className='comentarios'>
-                        <form method='POST'>
-                            <h3>Comentarios</h3>
-                            <select name="" id="">
-                                /* MOSTRAR TODOS LOS SERVICIOS REGISTRADOS PARA PODER COMENTARLOS */
-                            </select>
+                        <form method='POST' className='formulario' onSubmit={ingresarComentario}>
+                            <h2>Comentarios</h2>
+                            <div className='suscripciones-funcionario'>
+                                <h5>Codigo de Suscripción</h5>
+                                <select name="" id="" value={codigo_comentario} onChange={(e) => setCodigoComentario(e.target.value)}>
+                                    {suscripcionesFunc.map((suscripcion) => {
+                                        return <option key={suscripcion[0]} value={suscripcion[0]}>{suscripcion[0]}</option>
+                                    })}
+                                </select>
+                            </div>
+                                <textarea name="comentario" id="comentario" onChange={(e) => setComentario(e.target.value)} cols="30" rows="10" required></textarea>
 
-                            <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
-
-                            <button>Enviar</button>
+                                <button type='submit'>Enviar</button>
                         </form>
                     </div>
                     :

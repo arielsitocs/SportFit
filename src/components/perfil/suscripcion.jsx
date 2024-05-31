@@ -35,7 +35,7 @@ export default function (props) {
                 <p>{props.descripcion}</p>
                 <p>Fecha inicio: {props.fecha_inicio}</p>
                 <p>Fecha término:{props.fecha_exp}</p>
-                <p>${props.valor}</p>
+                <p>${props.valor}/mes</p>
             </div>
 
             <div className="suscripcion-boton">
