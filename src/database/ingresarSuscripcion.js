@@ -5,7 +5,17 @@ async function ingresarSuscripcion(descripcion, fecha_inicio, fecha_exp, tipo_pl
 
     try {
         await connection.execute(
-            'INSERT INTO suscripcion (descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cli, comentario) VALUES (:descripcion, :fecha_inicio, :fecha_exp, :tipo_plan, :valor, :rut_cliente, :comentario)', 
+            `BEGIN 
+                InsertarSuscripcion(
+                    :descripcion,
+                    :fecha_inicio,
+                    :fecha_exp,
+                    :tipo_plan,
+                    :valor,
+                    :rut_cliente,
+                    :comentario
+                ); 
+            END;`,
             { descripcion, fecha_inicio, fecha_exp, tipo_plan, valor, rut_cliente, comentario },
             { autoCommit: true }
         );

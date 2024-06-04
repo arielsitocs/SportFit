@@ -6,7 +6,7 @@ export default function Productos() {
     const { data, loading } = useFetch("https://www.saborlatinochile.cl/duoc/servicio_web_sportfit.php")
 
     const productos = [
-       {
+      {
         "codigo": "101",
         "nombre": "Cinturón soporte lumbar",
         "descripcion": "Dispositivo diseñado para brindar estabilidad y apoyo a la región lumbar.",
@@ -33,12 +33,28 @@ export default function Productos() {
       {
         "codigo": "104",
         "nombre": "Creatina Drive 300G",
-        "descripcion": "Zapatillas de ballet profesionales, ideales para clases y presentaciones.",
+        "descripcion": "Para mejorar tu rendimiento en el ejercicio y aumentar la masa muscular",
         "stock": 27,
         "precio": 29990,
         "imagen": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRva0l8HfT4lnlourDguGZW1OhpRvyUWHkYkUxSxJuOCxxXizn1jY1ICl3UrlwyVyvp0vJGX9Rf7Oyx7EyI_eeHM4ziHnP-G-AQ8Gs7b9FzBogtdKdRMswwTXKFSZXh5L5S-wZg6uk&usqp=CAc"
       },
-     ]
+      {
+        "codigo": "105",
+        "nombre": "Rodillera venda elástica",
+        "descripcion": "Para mejorar tu rendimiento en el ejercicio y aumentar la masa muscular",
+        "stock": 9,
+        "precio": 7000,
+        "imagen": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQqIsa0W-k-MjaPVgK-8zgWwO4wV_xoZKNG9aXTwOyF0oURgycmt24vCBkCNlRDt6xqTUP0RPnnnaMtSUGmALM3-xrzHNiVqoUw_sii_dFC39cY1BTdLaqzwhj5582xRiTxx6z1FPQ&usqp=CAc"
+      },
+      {
+        "codigo": "106",
+        "nombre": "Protector rodilleras pro",
+        "descripcion": "Previene lesiones en deportes de contacto.",
+        "stock": 11,
+        "precio": 13000,
+        "imagen": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSlgzDd4BTyJoiwPUE9t_Y0kLqgwh3KA6bv9T5sGpzMlsvedPwirD1OlfZAD5-1N3i7EXiBSlRRpUPNB0JjDE7nm3XDdrJd5xQtpyIppfS5DvDvezJsIrIdY8UZ-6_-1Rvqq2Q5G_M&usqp=CAc"
+      },
+    ]
 
 return (
     <div>

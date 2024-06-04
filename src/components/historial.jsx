@@ -37,10 +37,11 @@ export default function Historial() {
     };
 
     return (
-        <div className="historial-container">
-            <h1 className='titulo'>Historial de Compras</h1>
-            {
-                ordenes.length ?
+
+            <div className="historial-container">
+                <h1 className='titulo'>Historial de Compras</h1>
+                {
+                    ordenes.length ?
                         <div className="historial-list">
                             {ordenes.map((orden) => (
                                 <div className="historial-item" key={orden[0]}>
@@ -53,10 +54,11 @@ export default function Historial() {
                                 </div>
                             ))}
                         </div>
-                    :
-                    <p>No tienes compras anteriores.</p>
-            }
+                        :
+                        <p>No tienes compras anteriores.</p>
+                }
 
-        </div>
+            </div>
+
     );
 }

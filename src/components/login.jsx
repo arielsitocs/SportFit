@@ -56,7 +56,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <div className="main-content">
       <div className="login">
         <div className="tituloLogin">
           <h1>Login de Usuario</h1>

@@ -7,8 +7,7 @@ export default function Servicios() {
 
     const today = new Date();
     const fechaTermino = new Date();
-    fechaTermino.setDate(today.getDate() + 62);
-
+    fechaTermino.setDate(today.getDate() + 31);
 
     const servicios =
         [
@@ -16,7 +15,7 @@ export default function Servicios() {
                 tipo_plan: 'Nutricionista',
                 descripcion: 'Asegura una dieta balanceada dependiendo del objetivo que quieras lograr.',
                 imageUrl: nutricionista,
-                valor: 20000,
+                valor: 15000,
                 fecha_inicio: `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`,
                 fecha_exp: `${fechaTermino.getFullYear()}-${(fechaTermino.getMonth() + 1).toString().padStart(2, '0')}-${fechaTermino.getDate().toString().padStart(2, '0')}`
             },
@@ -25,7 +24,7 @@ export default function Servicios() {
                 tipo_plan: 'Preparador Físico',
                 descripcion: 'Entrenamientos personalizados de acuerdo a tus metas e intereses. No importa si eres nuevo o experimentado.',
                 imageUrl: preparador,
-                valor: 30000,
+                valor: 25000,
                 fecha_inicio: `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`,
                 fecha_exp: `${fechaTermino.getFullYear()}-${(fechaTermino.getMonth() + 1).toString().padStart(2, '0')}-${fechaTermino.getDate().toString().padStart(2, '0')}`
             },

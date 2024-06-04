@@ -21,7 +21,7 @@ export default function Perfil() {
     }, [usuario])
 
     const validarUsuario = () => {
-        if (usuario[5] == 'Nutricionista' || usuario[5] == 'Preparador Físisco') {
+        if (usuario[5] == 'Nutricionista' || usuario[5] == 'Preparador Físico') {
             setFuncionario(true);
         }
     }

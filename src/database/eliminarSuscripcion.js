@@ -1,17 +1,17 @@
-import { conectarBaseDatos } from './conexion.js'
+import { conectarBaseDatos } from './conexion.js';
 
 async function eliminarSuscripcion(codigo_suscripcion) {
     const connection = await conectarBaseDatos();
 
     try {
         await connection.execute(
-            'DELETE FROM suscripcion WHERE codigo = :codigo_suscripcion', 
+            'BEGIN EliminarSuscripcion(:codigo_suscripcion); END;', 
             { codigo_suscripcion },
             { autoCommit: true }
         );
-        console.log("Suscripcion eliminada.");
+        console.log("Suscripción eliminada.");
     } catch (err) {
-        console.error("Error al eliminar suscripcion: " + err);
+        console.error("Error al eliminar suscripción: " + err);
     } finally {
         if (connection) {
             try {
@@ -24,4 +24,4 @@ async function eliminarSuscripcion(codigo_suscripcion) {
     }
 }
 
-export { eliminarSuscripcion }
+export { eliminarSuscripcion };

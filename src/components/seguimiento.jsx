@@ -48,9 +48,9 @@ export default function GenerarGrid() {
                         <thead className="titulos">
                             <tr>
                                 <th>Código</th>
-                                <th>Producto</th>
                                 <th>Dirección</th>
                                 <th>Fecha ingreso</th>
+                                <th>Fecha entrega estimada</th>
                                 <th>Estado</th>
                                 <th>Monto</th>
                             </tr>
@@ -60,9 +60,9 @@ export default function GenerarGrid() {
                                 ordenes.map((orden) => (
                                     <tr className="contenido" key={orden.cod_orden}>
                                         <td>{orden[0]}</td>
-                                        <td></td>
                                         <td>{orden[2]}</td>
-                                        <td>{orden[5]}</td> 
+                                        <td>{orden[5]}</td>
+                                        <td>{orden[6]}</td> 
                                         <td>{orden[7]}</td>
                                         <td>${orden[1]}</td>
                                     </tr>

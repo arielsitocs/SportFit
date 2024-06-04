@@ -1,12 +1,12 @@
-import { conectarBaseDatos } from './conexion.js'
+import { conectarBaseDatos } from './conexion.js';
 
-async function ingresarComentario( codigo_comentario, comentario ) {
+async function ingresarComentario(codigo_comentario, comentario) {
     const connection = await conectarBaseDatos();
 
     try {
         await connection.execute(
-            'UPDATE suscripcion SET comentario = :comentario WHERE codigo = :codigo_comentario', 
-            { codigo_comentario, comentario},
+            'BEGIN updateSuscripcion(:codigo_comentario, :comentario); END;', 
+            { codigo_comentario, comentario },
             { autoCommit: true }
         );
         console.log("Comentario enviado.");
@@ -18,10 +18,10 @@ async function ingresarComentario( codigo_comentario, comentario ) {
                 await connection.close();
                 console.log('Conexión cerrada');
             } catch (err) {
-                console.error('Error al cerrar la conexión :', err);
+                console.error('Error al cerrar la conexión:', err);
             }
         }
     }
 }
 
-export { ingresarComentario }
+export { ingresarComentario };

@@ -1,13 +1,22 @@
-import { conectarBaseDatos, mostrarDatos } from './conexion.js'
+import { conectarBaseDatos } from './conexion.js';
 
-async function ingresarOrden( valor, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado) {
+async function ingresarOrden(valor, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado) {
     const connection = await conectarBaseDatos();
 
     try {
         await connection.execute(
-            'INSERT INTO orden (valor, direccion, rut_cli, cod_prod, fecha, fecha_estimada, estado) VALUES (:valor, :direccion, :rut_cliente, :codigo_producto, :fecha, :fecha_estimada, :estado)', 
-            { valor, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado},
-            { autoCommit: true }
+            `BEGIN 
+                InsertarOrden(
+                    :valor, 
+                    :direccion, 
+                    :rut_cliente, 
+                    :codigo_producto, 
+                    :fecha, 
+                    :fecha_estimada, 
+                    :estado
+                ); 
+            END;`,
+            { valor, direccion, rut_cliente, codigo_producto, fecha, fecha_estimada, estado }
         );
         console.log("Orden ingresada.");
     } catch (err) {
@@ -24,4 +33,4 @@ async function ingresarOrden( valor, direccion, rut_cliente, codigo_producto, fe
     }
 }
 
-export { ingresarOrden }
+export { ingresarOrden };

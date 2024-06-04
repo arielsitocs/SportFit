@@ -28,7 +28,7 @@ export default function Servicio({ imagen, tipo_plan, descripcion, valor, fecha_
                     });
               
                     if (response.ok) {
-                      alert("Suscripción exitosa.");
+                      alert('Suscripción exitosa.')
                     } else {
                       alert("Error al suscribirse.");
                     }

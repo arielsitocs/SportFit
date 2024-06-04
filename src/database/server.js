@@ -4,6 +4,7 @@ import cors from 'cors';
 import { guardarUsuario } from './registrarUsu.js';
 import { ingresarUsuario } from './loginUsu.js';
 import { ingresarOrden } from './ingresarOrden.js'
+import { obtenerOrdenSegui } from './obtenerOrdenSegui.js';
 import { ingresarSuscripcion } from './ingresarSuscripcion.js';
 import { ingresarComentario } from './ingresarComentario.js';
 import { obtenerSuscripcion } from './obtenerSuscripcion.js';
@@ -13,6 +14,12 @@ import { obtenerOrden } from './obtenerOrden.js';
 
 const app = express(); 
 const port = 3000;
+
+const CLIENT = 'AfVQ_YqhBHaz1LdBFZ3JNZ2jJN1CsDC54WfwRbsXUdIBsb_XHBUsuiqAm47_SvMB5mKc2QSVmeTFcg4e';
+const SECRET = 'EFIGrPWB1dw_vwhTrnNMSm_FbNH4be7j0qd5v9aVQ3NaZB6d42t2R6kmsuDE8luf_YmW76joii-VAvcj';
+const PAYPAL_API = 'https://api-m.sandbox.paypal.com';
+const auth = { user: CLIENT, pass: SECRET }
+
 
 // Middleware para permitir CORS
 app.use(cors());
@@ -66,7 +73,7 @@ app.post('/carro', async (req, res) => {
 app.post('/seguimiento', async (req, res) => {
     const { rut_cliente } = req.body;
     try {
-        const orden = await obtenerOrden(rut_cliente);
+        const orden = await obtenerOrdenSegui(rut_cliente);
         res.status(200).json({ success: true, message: 'Orden obtenida.', orden });
         return orden;
     } catch (error) {
@@ -116,9 +123,6 @@ app.post('/perfil', async (req, res) => {
     }
 });
 
-
-
-
 // app.delete('/perfil', async (req, res) => {
 //     const { codigo_suscripcion } = req.body;
 //     try {
@@ -129,6 +133,7 @@ app.post('/perfil', async (req, res) => {
 //         res.status(500).json({ success: false, message: 'Ocurrió un error al eliminar la suscripción.' });
 //     }
 // });
+
 
 app.listen(port, () => {
     console.log(`Servidor escuchando en http://localhost:${port}`);

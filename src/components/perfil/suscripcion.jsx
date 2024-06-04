@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import '../../styles/perfil.css'
 
 export default function (props) {
 
     var codigo_suscripcion;
+
+    const navigate = useNavigate();
 
     const eliminarSuscripcion = async () => {
 
@@ -19,6 +22,7 @@ export default function (props) {
 
             if (response.ok) {
                 alert("Suscripción eliminada.")
+                navigate('/perfil')
             } else {
                 alert("Error al eliminar suscripcion.");
             }

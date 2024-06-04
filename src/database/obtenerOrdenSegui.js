@@ -1,11 +1,11 @@
 import { conectarBaseDatos } from './conexion.js';
 
-async function obtenerOrden(rut_cliente) {
+async function obtenerOrdenSegui(rut_cliente) {
     const connection = await conectarBaseDatos();
 
     try {
         const result = await connection.execute(
-            'SELECT * FROM orden WHERE rut_cli = :rut_cliente AND estado = :estado',
+            'SELECT * FROM orden WHERE rut_cli = :rut_cliente AND estado != :estado',
             { rut_cliente, estado: 'Completada' },
             { autoCommit: true }
         );
@@ -26,4 +26,4 @@ async function obtenerOrden(rut_cliente) {
     }
 }
 
-export { obtenerOrden }
+export { obtenerOrdenSegui }

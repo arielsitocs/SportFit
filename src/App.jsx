@@ -22,7 +22,7 @@ function App() {
     const storedLogin = localStorage.getItem('login');
     return storedLogin ? JSON.parse(storedLogin) : false;
   });
-  
+
   // Almacenar el estado de login en el localStorage cada vez que cambie
   useEffect(() => {
     localStorage.setItem('login', JSON.stringify(login));
@@ -35,10 +35,10 @@ function App() {
   });
 
   useEffect(() => {
-    localStorage.setItem('nombre', JSON.stringify(nombre)); 
+    localStorage.setItem('nombre', JSON.stringify(nombre));
   }, [nombre]);
 
-  const[usuario, setUsuario] = useState(() => {
+  const [usuario, setUsuario] = useState(() => {
     const storedUsu = localStorage.getItem('usuario');
     return JSON.parse(storedUsu);
   });
@@ -49,34 +49,34 @@ function App() {
 
   // useEffect(() => {
   //   if(login !== true) {
-        
+
   //   }
   // }, [login])
 
   return (
     <AppContext.Provider value={{ login, setLogin, nombre, setNombre, usuario, setUsuario }}>
-      <div className='main-conten'>
-        <BrowserRouter>
-          <NavBar />
 
-          <Routes>
-            <Route path='*' element={<Error />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/carro" element={<Carro />} />
-            <Route path="/historial" element={<Historial />} />
-            <Route path="/seguimiento" element={<Seguimiento />} />
-            <Route path='/servicios' element={<Servicios />}></Route>
-            <Route path='/api' element={<Api />}></Route>
-          </Routes>
+        <div className='main-conten'>
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              <Route path='*' element={<Error />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route path="/perfil" element={<Perfil />} />
+              <Route path="/productos" element={<Productos />} />
+              <Route path="/carro" element={<Carro />} />
+              <Route path="/historial" element={<Historial />} />
+              <Route path="/seguimiento" element={<Seguimiento />} />
+              <Route path='/servicios' element={<Servicios />}></Route>
+              <Route path='/api' element={<Api />}></Route>
+            </Routes>
 
-          <Footer />
-        </BrowserRouter>
-      </div>
-    </AppContext.Provider>
+            <Footer />
+          </BrowserRouter>
+    </div>
+      </AppContext.Provider>
   )
 }
 
