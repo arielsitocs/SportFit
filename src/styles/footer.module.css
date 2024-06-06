@@ -1,0 +1,83 @@
+.footer {
+    display:flex;
+    bottom: 0;
+    left: auto;
+    width: 100%;
+    background-color: #b62727;
+    background: linear-gradient( #ff0000 0%, #c20202 22%, #a10000 38%, #7d0000 69%, #5c0000 100%);
+    color: #ffffff;
+    font-family: "Exo 2", sans-serif;
+    padding: 1rem 0;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+  
+.container {
+    max-width: 100%;
+    
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    height: 100px;
+    padding: 10px;
+  }
+
+  .contacto {
+    padding-right: 15px;
+    border-right: solid 1px black;
+    p {
+        text-align: center;
+        margin: 0.5rem;
+    }
+  }
+  
+  #ubicacion {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+  
+  .barritaD {
+        border-right: 2px solid black;
+        margin: 5rem;
+        
+  }
+  
+  .barritaI {
+        border-left: 2px solid black;
+        margin: 5rem;
+
+  }
+  
+  .contacto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .RRHH {
+    padding-left: 15px;
+    border-left: solid 1px black;
+    a {
+        text-decoration: none;
+        transition: color 0.2s ease;
+        color: black;
+      }
+      
+      a:hover {
+        color: white;
+      }
+  }
+
+  .copyright {
+    p {
+        text-align: center;
+        margin-top: 1rem;
+        margin-left: 6.5rem;
+    }
+  }
+ 
+  

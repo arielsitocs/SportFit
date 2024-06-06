@@ -4,6 +4,14 @@ async function ingresarOrden(valor, direccion, rut_cliente, codigo_producto, fec
     const connection = await conectarBaseDatos();
 
     try {
+        const convertirCLP = () => {
+            const tasaConversion = 907;
+            valor = valor * tasaConversion;
+            return Math.round(valor);
+        };
+
+        convertirCLP();
+        
         await connection.execute(
             `BEGIN 
                 InsertarOrden(

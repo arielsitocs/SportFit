@@ -56,9 +56,10 @@ function App() {
   return (
     <AppContext.Provider value={{ login, setLogin, nombre, setNombre, usuario, setUsuario }}>
 
-        <div className='main-conten'>
+        <div className='main-content'>
           <BrowserRouter>
             <NavBar />
+            
             <Routes>
               <Route path='*' element={<Error />} />
               <Route path="/" element={<Home />} />

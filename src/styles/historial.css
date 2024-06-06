@@ -1,13 +1,18 @@
 .historial-container {
-    margin-top: 50px;
-    margin-bottom: 238px;
+    margin-bottom: -100px;
+    margin-top: 60px;
+    height: 85vh;
+
+    p {
+        text-align: center;
+    }
 }
 
 .historial-item {
-    border-top: 1px solid rgba(160, 160, 160, 0.140); /* Color y grosor del borde */
-    border-bottom: 1px solid rgb(160, 160, 160, 0.140); /* Color y grosor del borde */
+    border-top: 1px solid rgba(160, 160, 160, 0.140);
+    border-bottom: 1px solid rgb(160, 160, 160, 0.140); 
 
-    padding: 10px; /* Espacio interno del elemento */
+    padding: 10px; 
     text-align: center;
     background-color: #f5f5f544;
 }
@@ -15,11 +20,11 @@
 .historial-item img {
     border: 0.5px rgba(160, 160, 160, 0.459);
     border-style: solid;
-    max-width: 200px; /* Establecer un ancho máximo para la imagen */
-    height: auto; /* Para mantener la proporción de la imagen */
-    margin-right: 10px; /* Espacio a la derecha de la imagen */
+    max-width: 200px;
+    height: auto; 
+    margin-right: 10px;
 }
 
 .item-details {
-    flex-grow: 1; /* Para expandir este div y ocupar todo el espacio disponible */
+    flex-grow: 1;
 }

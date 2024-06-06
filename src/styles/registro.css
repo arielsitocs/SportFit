@@ -1,3 +1,6 @@
+
+
+
 .registro {
     display: flex;
     justify-content: center;
@@ -5,16 +8,19 @@
     flex-direction: column;
     margin-bottom: 60px;
 
-    h1 {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
     .formulario {
         width: 400px;
         padding: 20px;
+        margin-top: 50px;
         border-radius: 15px;
         background-color: #b62727;
+        box-shadow: 15px 15px 10px black ;
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+        }
 
         div {
             display: flex;

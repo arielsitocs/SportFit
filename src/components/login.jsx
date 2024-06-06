@@ -24,7 +24,7 @@ export default function Login() {
   useEffect(() => {
     console.log('Usuario ingresao: ', usuario)
   }, [usuario])
-  
+
   const manejarLogin = async (event) => {
     event.preventDefault();
 
@@ -58,10 +58,10 @@ export default function Login() {
   return (
     <div className="main-content">
       <div className="login">
-        <div className="tituloLogin">
-          <h1>Login de Usuario</h1>
-        </div>
         <div className="col-lg-6 mb-5 mb-lg-0 position-relative" id="formu">
+          <div className="tituloLogin">
+            <h1>Login de Usuario</h1>
+          </div>
           <div className="card-body px-4 py-5 px-md-5" id="antesForm">
             <form className="formu" onSubmit={manejarLogin}>
               <div className="usuario">

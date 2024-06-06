@@ -43,9 +43,6 @@
         height: auto;
     }
 }
-
-
-
 #carta {
   background-color: rgb(145, 145, 145);
   width: auto;
@@ -53,13 +50,15 @@
   margin: auto;
 }
 
-.card-body {
-  padding: 0;
-  padding-left: 10px;
-  padding-right: 10px;
+.contenido {
+
+  height: 71vh !important;
+
+  .card-body {
+   background-color: aqua !important;
+  }
 
 }
-
 
 
 

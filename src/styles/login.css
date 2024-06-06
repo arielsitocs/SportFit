@@ -1,17 +1,31 @@
+.login {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 8%;
+    margin-bottom: 8%;
+}
+
 .tituloLogin {
-    margin-top: 60px;
     margin-bottom: 10px;
     text-align: center;
+    color: white;
 }
-.formu {
-    width: 400px;
+
+
+
+#formu {
+    width: 30%;
     padding: 20px;
     background-color: #b62727;
     display: block;
     margin-left: auto;
     margin-right: auto;
     border-radius: 15px;
-    margin-bottom: 80px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 15px 15px 10px black ;
 
     div {
         display: flex;

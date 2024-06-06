@@ -44,10 +44,11 @@ export default function Registro() {
   };
 
   return (
-    <main>
+    <main className='todoregistro'>
       <div className="registro">
-        <h1>Registro de Usuario</h1>
+
         <form className='formulario' onSubmit={manejarRegistro}>
+          <h1>Registro de Usuario</h1>
           <div className="correo">
             <label htmlFor="correo">RUT</label>
             <input

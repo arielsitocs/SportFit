@@ -1,4 +1,5 @@
 import '../styles/seguimiento.css';
+import style from '../styles/seguimiento.module.css';
 import { AppContext } from '../App';
 import { useContext, useEffect, useState } from 'react';
 
@@ -37,7 +38,10 @@ export default function GenerarGrid() {
     };
 
     return (
-        <div className="card-body">
+        <div className={style.contenido}>
+
+        
+        <div className="card-body" >
             <div id="carta">
                 <form method="POST">
                     <div className="busqueda">
@@ -76,6 +80,7 @@ export default function GenerarGrid() {
                     </table>
                 </form>
             </div>
+        </div>
         </div>
     );
 }
